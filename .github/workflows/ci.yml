@@ -47,6 +47,8 @@ jobs:
             --exclude "elsevier\\.com"
             --exclude "oreilly\\.com"
             --exclude "coursera\\.org"
+            --exclude "uber\\.com"
+            --exclude "usenix\\.org"
             README.md
           fail: true
         env:
