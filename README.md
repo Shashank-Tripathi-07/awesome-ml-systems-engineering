@@ -149,7 +149,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [llama.cpp](https://github.com/ggerganov/llama.cpp) 🛠️ - Pure C/C++ LLM inference with quantization support. Runs on CPUs and Apple Silicon without framework dependencies.
 - [Triton Inference Server](https://github.com/triton-inference-server/server) 🛠️ - NVIDIA's production-grade model serving platform with dynamic batching, model ensembles, and multi-framework support.
 - [ONNX Runtime](https://onnxruntime.ai) 🛠️ - Cross-platform, high-performance inference engine for ONNX models across CPU, GPU, and edge targets.
-- [PagedAttention paper](https://arxiv.org/pdf/2309.06180) ⭐ 🎓 - vLLM's key paper on virtual memory-inspired KV cache management enabling high-throughput LLM serving without memory waste.
+- [PagedAttention paper](https://arxiv.org/pdf/2309.06180) ⭐ - vLLM's key paper on virtual memory-inspired KV cache management enabling high-throughput LLM serving without memory waste.
 - [Speculative Decoding](https://arxiv.org/abs/2211.17192) 🎓 - Technique for accelerating autoregressive generation using a small draft model to propose tokens verified by the full model.
 - [Continuous Batching for LLM Inference](https://www.anyscale.com/blog/continuous-batching-llm-inference) ⭐ - Anyscale's explanation of iteration-level batching, the key scheduling innovation behind modern high-throughput LLM serving.
 - [Ollama](https://github.com/ollama/ollama) 🛠️ - Simple local LLM serving with automatic quantization and hardware detection, ideal for development and edge deployment.
