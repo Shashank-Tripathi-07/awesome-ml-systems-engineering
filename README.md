@@ -81,7 +81,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 ## Courses
 
 - [CS249r: TinyML and Efficient Deep Learning](https://efficientml.ai) 🎓 - MIT course on efficient ML covering quantization, pruning, and hardware-aware neural architecture design.
-- [Full Stack Deep Learning](https://fullstackdeeplearning.com) - ⭐ End-to-end course on building and deploying ML-powered products; strong on MLOps, tooling, and production.
+- [Full Stack Deep Learning](https://github.com/full-stack-deep-learning/fsdl-text-recognizer-2022-labs) - ⭐ End-to-end course on building and deploying ML-powered products; strong on MLOps, tooling, and production.
 - [GPU Mode Lectures](https://github.com/gpu-mode/lectures) 🎓 - Community lecture series on GPU programming, CUDA, and Triton kernel development. Freely available on YouTube.
 - [Stanford CS149: Parallel Computing](https://gfxcourses.stanford.edu/cs149/fall23) 🎓 - Foundational parallel computing course covering SIMD, multithreading, GPU architecture, and cache optimization.
 - [CMU 15-418/618: Parallel Computer Architecture and Programming](https://www.cs.cmu.edu/~418/) 🎓 - Deep dive into parallel hardware and programming models from CMU. Slides and assignments publicly available.
@@ -96,8 +96,8 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [NVIDIA CUDA Programming Guide](https://docs.nvidia.com/cuda/cuda-c-programming-guide/) - ⭐ The authoritative reference for CUDA GPU programming. Covers memory hierarchy, thread model, and execution model in depth.
 - [NVIDIA Hopper Architecture Whitepaper](https://resources.nvidia.com/en-us-tensor-core/gtc22-whitepaper-hopper) - Deep technical dive into H100 GPU architecture including Transformer Engine, NVLink 4.0, and HBM3.
 - [Google TPU System Architecture](https://cloud.google.com/tpu/docs/system-architecture-tpu-vm) - Official documentation on TPU pod architecture, memory hierarchy, and high-speed interconnects.
-- [AMD ROCm Documentation](https://rocm.docs.amd.com/) - AMD's open GPU compute platform documentation. Increasingly relevant for large-scale training workloads.
-- [Intel Gaudi Developer Documentation](https://docs.habana.ai) - Intel's ML accelerator documentation, relevant for AWS DL1/DL2 instance workloads.
+- [AMD ROCm Documentation](https://github.com/ROCm/ROCm) - AMD's open GPU compute platform documentation. Increasingly relevant for large-scale training workloads.
+- [Intel Gaudi Developer Documentation](https://github.com/HabanaAI/Model-References) - Intel's ML accelerator documentation, relevant for AWS DL1/DL2 instance workloads.
 - [Hot Chips Symposium](https://www.hotchips.org/archives/) - Annual symposium proceedings covering cutting-edge processor, accelerator, and memory architecture from industry and academia.
 - [AWS Trainium and Inferentia](https://aws.amazon.com/machine-learning/trainium/) - AWS purpose-built ML chips; Trainium for training and Inferentia for inference, with NeuronSDK compiler toolchain.
 - [AMD CDNA3 Architecture](https://www.amd.com/en/products/accelerators/instinct/mi300.html) - AMD's MI300 series GPU architecture with unified CPU/GPU memory and HBM3 for large model training.
@@ -447,7 +447,6 @@ Top peer-reviewed venues for ML systems research and engineering.
 - [Slurm + PyTorch DDP Guide](https://pytorch.org/tutorials/intermediate/ddp_series_multinode.html) - Official PyTorch tutorial for launching distributed training jobs across multi-node clusters using Slurm and torchrun.
 - [Kubernetes for ML Workloads](https://kubernetes.io/docs/concepts/workloads/) - Container orchestration standard for production ML serving; basis for Kubeflow, Ray on Kubernetes, and most cloud ML platforms.
 - [Volcano](https://volcano.sh) - 🛠️ Kubernetes-native batch scheduling system for ML workloads; adds gang scheduling, queue management, and GPU topology-aware placement.
-- [Run:ai](https://run.ai) - 🛠️ GPU cluster management platform with workload scheduling, GPU virtualization, and utilization analytics for shared ML infrastructure.
 - [Kueue](https://kueue.sigs.k8s.io) - 🛠️ Kubernetes-native job queueing system for managing batch ML workloads with fair sharing, priorities, and resource quotas.
 
 ## Data Quality and Contracts
@@ -471,7 +470,7 @@ Top peer-reviewed venues for ML systems research and engineering.
 ## Hyperparameter Optimization
 
 - [Optuna](https://optuna.org) - ⭐ 🛠️ Define-by-run HPO framework with efficient samplers (TPE, CMA-ES) and pruners for early stopping; integrates with PyTorch, TensorFlow, and XGBoost.
-- [Ray Tune](https://docs.ray.io/en/latest/tune/index.html) - ⭐ 🛠️ Distributed hyperparameter tuning library built on Ray; supports Population Based Training, ASHA, and integration with Optuna/Ax searchers.
+- [Ray Tune](https://github.com/ray-project/ray/tree/master/python/ray/tune) - ⭐ 🛠️ Distributed hyperparameter tuning library built on Ray; supports Population Based Training, ASHA, and integration with Optuna/Ax searchers.
 - [Ax (Adaptive Experimentation Platform)](https://ax.dev) - 🛠️ Meta's Bayesian optimization platform for HPO and A/B testing; uses BoTorch for GP-based surrogate models.
 - [Hyperband and ASHA](https://arxiv.org/abs/1603.06212) - 🎓 Li et al. paper on Hyperband successive halving algorithm; foundational for modern early-stopping-based HPO used in Ray Tune and Optuna.
 - [Feast (Feature Store)](https://feast.dev) - 🛠️ Open-source feature store for managing, storing, and serving ML features; decouples feature engineering from model training.
