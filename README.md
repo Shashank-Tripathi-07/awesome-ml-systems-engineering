@@ -69,7 +69,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 
 ## Books
 
-- [CS249r: Machine Learning Systems (Vol I & II)](https://mlsysbook.ai/contents/preface.html) - ⭐ Open-access two-volume textbook from Harvard covering ML workflows, hardware acceleration, distributed training, and responsible engineering.
+- [CS249r: Machine Learning Systems (Vol I & II)](https://mlsysbook.ai/intro.html) - ⭐ Open-access two-volume textbook from Harvard covering ML workflows, hardware acceleration, distributed training, and responsible engineering.
 - [Programming Massively Parallel Processors](https://www.elsevier.com/books/programming-massively-parallel-processors/kirk/978-0-323-91231-0) - Standard textbook for GPU programming with CUDA. Essential for anyone writing custom kernels.
 - [Designing Data-Intensive Applications](https://dataintensive.net) - ⭐ Systems thinking for data pipelines, storage, and reliability. Directly applicable to ML data infrastructure.
 - [Distributed Systems: Principles and Paradigms](https://www.distributed-systems.net/index.php/books/ds4/) - Foundational distributed systems theory that underpins distributed ML training. Available free online.
@@ -180,7 +180,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [Outlines](https://github.com/dottxt-ai/outlines) 🛠️ - Structured text generation library enforcing JSON schema, regex, and grammar constraints on LLM outputs at the token level.
 - [Medusa](https://github.com/FasterDecoding/Medusa) 🛠️ - Speculative decoding framework adding multiple decoding heads to predict several future tokens simultaneously, improving throughput without quality loss.
 - [Disaggregated Prefill for LLM Serving](https://arxiv.org/abs/2401.09670) 🎓 - Paper on separating prefill (prompt processing) and decode phases across different hardware to optimize GPU utilization and latency.
-- [Prefix Caching in vLLM](https://docs.vllm.ai/en/latest/automatic_prefix_caching/apc.html) 🛠️ - Automatic prefix caching enabling reuse of KV cache across requests with shared prompt prefixes, reducing redundant computation.
+- [Prefix Caching in vLLM](https://github.com/vllm-project/vllm/blob/main/docs/source/features/automatic_prefix_caching.md) 🛠️ - Automatic prefix caching enabling reuse of KV cache across requests with shared prompt prefixes, reducing redundant computation.
 
 ## Quantization and Compression
 
@@ -292,7 +292,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [Elastic Training with Torchelastic](https://pytorch.org/docs/stable/elastic/run.html) 🛠️ - PyTorch's elastic training framework for handling node failures and dynamic cluster resizing without restarting from scratch.
 - [PyTorch Distributed Checkpointing](https://pytorch.org/tutorials/recipes/distributed_checkpoint_recipe.html) 🛠️ - PyTorch's distributed checkpointing API for asynchronous, fault-tolerant state saving during large-scale training.
 - [Pathways](https://arxiv.org/pdf/2203.12533) 🎓 - Google's paper on a unified ML runtime designed for reliability, heterogeneous acceleration, and multi-task training at scale.
-- [Reliability at Scale (OSDI 2022)](https://www.usenix.org/conference/osdi22/presentation/wang-weeklong) 🎓 - Microsoft research on failure modes and recovery strategies in large-scale ML training clusters.
+- [Reliability at Scale (OSDI 2022)](https://www.usenix.org/system/files/osdi22-wang-weeklong.pdf) 🎓 - Microsoft research on failure modes and recovery strategies in large-scale ML training clusters.
 
 ## Security and Privacy
 
@@ -333,7 +333,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [MCUNet](https://mcunet.mit.edu) ⭐ 🎓 - MIT framework for deploying neural networks on microcontrollers with kilobytes of SRAM via neural architecture search and TinyEngine.
 - [Edge Impulse](https://www.edgeimpulse.com) 🛠️ - End-to-end platform for developing and deploying ML on microcontrollers and edge devices with hardware-in-the-loop testing.
 - [CMSIS-NN](https://arm-software.github.io/CMSIS-NN/latest/) 🛠️ - ARM's optimized neural network kernels for Cortex-M microcontrollers using SIMD intrinsics.
-- [Apache TVM MicroTVM](https://tvm.apache.org/docs/topic/microtvm/index.html) 🛠️ - TVM sub-project for compiling and deploying ML models on bare-metal microcontrollers without an OS.
+- [Apache TVM MicroTVM](https://tvm.apache.org/docs/topic/microtvm) 🛠️ - TVM sub-project for compiling and deploying ML models on bare-metal microcontrollers without an OS.
 - [TinyML Foundation](https://www.tinyml.org) - Community and resource hub for machine learning on extremely constrained devices.
 - [ONNX Runtime Mobile](https://onnxruntime.ai/docs/tutorials/mobile/) 🛠️ - Optimized ONNX Runtime build for mobile and embedded targets with CoreML and NNAPI execution providers.
 
@@ -506,8 +506,8 @@ Top peer-reviewed venues for ML systems research and engineering.
 - [Meta's LLaMA 3 Training Infrastructure](https://engineering.fb.com/2024/03/12/data-center-engineering/building-metas-genai-infrastructure/) - ⭐ Meta's blog post on building 24,576-GPU clusters for LLaMA 3 training, covering network topology, storage, and reliability at scale.
 - [Google's PaLM: Scaling Language Modeling with Pathways](https://arxiv.org/abs/2204.02311) - 🎓 Systems paper describing training a 540B parameter model across 6144 TPUs using the Pathways orchestration system.
 - [Databricks Dolly: Lessons from Fine-Tuning LLMs](https://www.databricks.com/blog/2023/04/12/dolly-first-open-commercially-viable-instruction-tuned-llm) - Practical post on fine-tuning a production-grade instruction-following model on a single machine; lessons on data quality and compute efficiency.
-- [Netflix: Scaling ML Infrastructure](https://netflixtechblog.com/machine-learning-platform-meetup-9a7bc86e3e0e) - Netflix engineering post on their ML platform evolution covering feature engineering, model deployment, and A/B testing at scale.
-- [Uber's Michelangelo: ML Platform at Scale](https://www.uber.com/blog/michelangelo-machine-learning-platform/) - ⭐ Seminal post describing Uber's end-to-end ML platform architecture; influenced the design of most corporate ML platforms.
+- [Netflix: Scaling ML Infrastructure](https://netflixtechblog.com/scaling-media-machine-learning-at-netflix-f19b400243) - Netflix engineering post on their ML platform evolution covering feature engineering, model deployment, and A/B testing at scale.
+- [Uber's Michelangelo: ML Platform at Scale](https://www.uber.com/en-GB/blog/michelangelo-machine-learning-platform/) - ⭐ Seminal post describing Uber's end-to-end ML platform architecture; influenced the design of most corporate ML platforms.
 - [LinkedIn's Pro-ML: Automated Machine Learning at LinkedIn](https://engineering.linkedin.com/blog/2019/automated-machine-learning) - Post on LinkedIn's AutoML and feature platform serving hundreds of production models at petabyte scale.
 
 ## Contribute

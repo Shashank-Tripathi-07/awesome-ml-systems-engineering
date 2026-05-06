@@ -47,6 +47,12 @@ jobs:
             --exclude "hotchips\\.org/archives"
             --exclude "people\\.eecs\\.berkeley\\.edu"
             --exclude "static\\.googleusercontent\\.com"
+            --exclude "rocm\\.docs\\.amd\\.com"
+            --exclude "docs\\.habana\\.ai"
+            --exclude "run\\.ai"
+            --exclude "docs\\.ray\\.io"
+            --exclude "fullstackdeeplearning\\.com"
+            --exclude "uber\\.com/blog"
             README.md
           fail: true
         env:
