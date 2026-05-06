@@ -271,7 +271,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [Weights & Biases](https://wandb.ai) 🛠️ - Experiment tracking, artifact versioning, and collaborative ML development platform. Widely adopted in both research and production.
 - [ZenML](https://www.zenml.io) 🛠️ - MLOps framework for building portable, reproducible ML pipelines with integrations for RAG, fine-tuning, and evaluation.
 - [Seldon Core](https://github.com/SeldonIO/seldon-core) 🛠️ - Kubernetes-native model serving with canary deployments, A/B testing, and explainability integrations.
-- [The ML Test Score](https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/acd2df674c71b8e26e5b10f9c3e76a0f4b8a4c5.pdf) ⭐ 🎓 - Google's rubric paper defining 28 tests for production ML system readiness across data, model, infrastructure, and monitoring.
+- [The ML Test Score](https://storage.googleapis.com/gweb-research2023-media/pubtools/4156.pdf) ⭐ 🎓 - Google's rubric paper defining 28 tests for production ML system readiness across data, model, infrastructure, and monitoring.
 
 ## LLMOps Platforms
 
@@ -294,7 +294,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [Elastic Training with Torchelastic](https://pytorch.org/docs/stable/elastic/run.html) 🛠️ - PyTorch's elastic training framework for handling node failures and dynamic cluster resizing without restarting from scratch.
 - [PyTorch Distributed Checkpointing](https://pytorch.org/tutorials/recipes/distributed_checkpoint_recipe.html) 🛠️ - PyTorch's distributed checkpointing API for asynchronous, fault-tolerant state saving during large-scale training.
 - [Pathways](https://arxiv.org/pdf/2203.12533) 🎓 - Google's paper on a unified ML runtime designed for reliability, heterogeneous acceleration, and multi-task training at scale.
-- [Reliability at Scale (OSDI 2022)](https://www.usenix.org/system/files/osdi22-wang-weeklong.pdf) 🎓 - Microsoft research on failure modes and recovery strategies in large-scale ML training clusters.
+- [Reliability at Scale (OSDI 2022)](https://www.usenix.org/conference/osdi22/presentation/wang-weeklong) 🎓 - Microsoft research on failure modes and recovery strategies in large-scale ML training clusters.
 
 ## Security and Privacy
 
@@ -335,7 +335,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [MCUNet](https://mcunet.mit.edu) ⭐ 🎓 - MIT framework for deploying neural networks on microcontrollers with kilobytes of SRAM via neural architecture search and TinyEngine.
 - [Edge Impulse](https://www.edgeimpulse.com) 🛠️ - End-to-end platform for developing and deploying ML on microcontrollers and edge devices with hardware-in-the-loop testing.
 - [CMSIS-NN](https://arm-software.github.io/CMSIS-NN/latest/) 🛠️ - ARM's optimized neural network kernels for Cortex-M microcontrollers using SIMD intrinsics.
-- [Apache TVM MicroTVM](https://github.com/apache/tvm/tree/main/apps/microtvm) 🛠️ - TVM sub-project for compiling and deploying ML models on bare-metal microcontrollers without an OS.
+- [Apache TVM MicroTVM](https://github.com/apache/tvm/tree/main/apps) 🛠️ - TVM sub-project for compiling and deploying ML models on bare-metal microcontrollers without an OS.
 - [TinyML Foundation](https://www.tinyml.org) - Community and resource hub for machine learning on extremely constrained devices.
 - [ONNX Runtime Mobile](https://onnxruntime.ai/docs/tutorials/mobile/) 🛠️ - Optimized ONNX Runtime build for mobile and embedded targets with CoreML and NNAPI execution providers.
 
@@ -507,8 +507,8 @@ Top peer-reviewed venues for ML systems research and engineering.
 - [Meta's LLaMA 3 Training Infrastructure](https://engineering.fb.com/2024/03/12/data-center-engineering/building-metas-genai-infrastructure/) - ⭐ Meta's blog post on building 24,576-GPU clusters for LLaMA 3 training, covering network topology, storage, and reliability at scale.
 - [Google's PaLM: Scaling Language Modeling with Pathways](https://arxiv.org/abs/2204.02311) - 🎓 Systems paper describing training a 540B parameter model across 6144 TPUs using the Pathways orchestration system.
 - [Databricks Dolly: Lessons from Fine-Tuning LLMs](https://www.databricks.com/blog/2023/04/12/dolly-first-open-commercially-viable-instruction-tuned-llm) - Practical post on fine-tuning a production-grade instruction-following model on a single machine; lessons on data quality and compute efficiency.
-- [Netflix: Scaling ML Infrastructure](https://netflixtechblog.com/scaling-media-machine-learning-at-netflix-f19b400243) - Netflix engineering post on their ML platform evolution covering feature engineering, model deployment, and A/B testing at scale.
-- [Uber's Michelangelo: ML Platform at Scale](https://www.uber.com/en-GB/blog/michelangelo-machine-learning-platform/) - ⭐ Seminal post describing Uber's end-to-end ML platform architecture; influenced the design of most corporate ML platforms.
+- [Netflix: Personalization and Search at Scale](https://research.netflix.com/research-area/machine-learning) - Netflix Research hub covering ML infrastructure, recommendation systems, and model deployment at scale.
+- [Uber's Michelangelo: ML Platform at Scale](https://www.uber.com/blog/michelangelo-machine-learning-platform/) - ⭐ Seminal post describing Uber's end-to-end ML platform architecture; influenced the design of most corporate ML platforms.
 - [LinkedIn's Pro-ML: Automated Machine Learning at LinkedIn](https://engineering.linkedin.com/blog/2019/automated-machine-learning) - Post on LinkedIn's AutoML and feature platform serving hundreds of production models at petabyte scale.
 
 ## Contribute
