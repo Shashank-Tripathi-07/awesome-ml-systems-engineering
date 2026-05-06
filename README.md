@@ -1,4 +1,4 @@
-# Awesome ML Systems Engineering [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![Track Awesome List](https://www.trackawesomelist.com/badge.svg)](https://www.trackawesomelist.com)
+# Awesome ML Systems Engineering [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 > A curated list of resources covering the full ML Systems Engineering stack: from hardware and compilers to distributed training, inference, and production operations.
 
