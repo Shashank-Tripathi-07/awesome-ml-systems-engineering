@@ -1,6 +1,6 @@
-# Awesome ML Systems Engineering [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![Track Awesome List](https://www.trackawesomelist.com/badge.svg)](https://www.trackawesomelist.com)
+# Awesome ML Systems Engineering [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![Track Awesome List](https://www.trackawesomelist.com/badge.svg)](https://www.trackawesomelist.com/Shashank-Tripathi-07/awesome-ml-systems-engineering/)
 
-> A curated list of resources covering the full ML Systems Engineering stack -- from hardware and compilers to distributed training, inference, and production operations.
+> A curated list of resources covering the full ML Systems Engineering stack: from hardware and compilers to distributed training, inference, and production operations.
 
 ML Systems Engineering sits at the intersection of machine learning and systems software. This list is for practitioners who build, optimize, and operate ML systems at any scale. Only resources personally vetted and considered essential are included.
 
@@ -17,11 +17,20 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [Kernel Programming](#kernel-programming)
 - [Distributed Training](#distributed-training)
 - [Collective Communication](#collective-communication)
+- [Memory-Efficient Training](#memory-efficient-training)
 - [Inference and Serving](#inference-and-serving)
 - [Quantization and Compression](#quantization-and-compression)
+- [RLHF Infrastructure](#rlhf-infrastructure)
+- [Vector Databases and Retrieval](#vector-databases-and-retrieval)
+- [LLM Evaluation Frameworks](#llm-evaluation-frameworks)
+- [LLM Observability and Tracing](#llm-observability-and-tracing)
+- [Synthetic Data Generation](#synthetic-data-generation)
+- [Multi-Modal Systems](#multi-modal-systems)
 - [Benchmarking and Profiling](#benchmarking-and-profiling)
 - [Data Engineering](#data-engineering)
 - [MLOps and Production](#mlops-and-production)
+- [LLMOps Platforms](#llmops-platforms)
+- [Deployment Strategies](#deployment-strategies)
 - [Fault Tolerance and Reliability](#fault-tolerance-and-reliability)
 - [Security and Privacy](#security-and-privacy)
 - [Sustainable AI](#sustainable-ai)
@@ -32,6 +41,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [Blogs and Newsletters](#blogs-and-newsletters)
 - [Communities](#communities)
 - [Conferences and Venues](#conferences-and-venues)
+- [Contribute](#contribute)
 
 ---
 
@@ -42,24 +52,29 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [The Deep Learning Compilation Survey](https://arxiv.org/abs/2002.08794) 🎓 - Comprehensive survey of deep learning compiler techniques; essential reading before diving into compiler backends.
 - [Awesome ML Systems (GPU Mode)](https://github.com/gpu-mode/awesomeMLSys) - GPU Mode community's onboarding reading list, strong on GPU kernel and attention mechanism resources.
 - [awesome-seml](https://github.com/SE-ML/awesome-seml) - Curated list on Software Engineering for ML, complementary to this list with a software process angle.
+- [Awesome Production Machine Learning](https://github.com/EthicalML/awesome-production-machine-learning) - Curated list of open-source libraries for deploying, monitoring, versioning, and securing ML models in production.
 
 ## Books
 
-- [CS249r: Machine Learning Systems (Vol I & II)](https://mlsysbook.ai) ⭐ - Open-access two-volume textbook from Harvard covering ML workflows, hardware acceleration, distributed training, and responsible engineering.
+- [CS249r: Machine Learning Systems (Vol I & II)](https://mlsysbook.ai/contents/intro.html) ⭐ - Open-access two-volume textbook from Harvard covering ML workflows, hardware acceleration, distributed training, and responsible engineering.
 - [Programming Massively Parallel Processors](https://www.elsevier.com/books/programming-massively-parallel-processors/kirk/978-0-323-91231-0) - Standard textbook for GPU programming with CUDA. Essential for anyone writing custom kernels.
 - [Designing Data-Intensive Applications](https://dataintensive.net) ⭐ - Systems thinking for data pipelines, storage, and reliability. Directly applicable to ML data infrastructure.
 - [Distributed Systems: Principles and Paradigms](https://www.distributed-systems.net/index.php/books/ds4/) - Foundational distributed systems theory that underpins distributed ML training. Available free online.
 - [High Performance Python](https://www.oreilly.com/library/view/high-performance-python/9781492055013/) - Profiling and optimization techniques for Python-based ML workflows.
+- [RLHF Book](https://rlhfbook.com) ⭐ - Comprehensive free guide to the full RLHF pipeline from reward modeling to policy optimization.
 
 ## Courses
 
-- [CS249r: TinyML and Efficient Deep Learning](https://efficientml.ai) 🎓 - MIT course on efficient ML covering quantization, pruning, and hardware-aware neural architecture design.
-- [Full Stack Deep Learning](https://fullstackdeeplearning.com) ⭐ - End-to-end course on building and deploying ML-powered products; strong on MLOps, tooling, and production.
+- [CS249r: TinyML and Efficient Deep Learning](https://efficientml.ai/courses/) 🎓 - MIT course on efficient ML covering quantization, pruning, and hardware-aware neural architecture design.
+- [Full Stack Deep Learning](https://fullstackdeeplearning.com/course/) ⭐ - End-to-end course on building and deploying ML-powered products; strong on MLOps, tooling, and production.
 - [GPU Mode Lectures](https://github.com/gpu-mode/lectures) 🎓 - Community lecture series on GPU programming, CUDA, and Triton kernel development. Freely available on YouTube.
 - [Stanford CS149: Parallel Computing](https://gfxcourses.stanford.edu/cs149/fall23) 🎓 - Foundational parallel computing course covering SIMD, multithreading, GPU architecture, and cache optimization.
 - [CMU 15-418/618: Parallel Computer Architecture and Programming](https://www.cs.cmu.edu/~418/) 🎓 - Deep dive into parallel hardware and programming models from CMU. Slides and assignments publicly available.
 - [Deep Learning Systems (dlsyscourse.org)](https://dlsyscourse.org) 🎓 ⭐ - Course on building ML frameworks from scratch; teaches autodiff internals, operator fusion, and hardware backends.
 - [MIT 6.5940: TinyML and Efficient Deep Learning Computing](https://hanlab.mit.edu/courses/2023-fall-65940) 🎓 - MIT Han Lab's course on efficient neural networks, quantization, pruning, and hardware co-design.
+- [MLOps Zoomcamp](https://datatalks.club/blog/mlops-zoomcamp.html) 🎓 - Free 3-month course covering Docker, MLflow, Mage, Prometheus, Evidently, and CI/CD for ML systems.
+- [Made With ML](https://madewithml.com/courses/mlops) 🎓 - Comprehensive open curriculum for designing, developing, deploying, and iterating on production ML systems.
+- [Machine Learning Engineering for Production (MLOps)](https://www.coursera.org/specializations/machine-learning-engineering-for-production-mlops) 🎓 - Google-authored Coursera specialization on production-grade ML systems and pipelines.
 
 ## Hardware and Accelerators
 
@@ -68,7 +83,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [Google TPU System Architecture](https://cloud.google.com/tpu/docs/system-architecture-tpu-vm) - Official documentation on TPU pod architecture, memory hierarchy, and high-speed interconnects.
 - [AMD ROCm Documentation](https://rocm.docs.amd.com/) - AMD's open GPU compute platform documentation. Increasingly relevant for large-scale training workloads.
 - [Intel Gaudi Developer Documentation](https://docs.habana.ai) - Intel's ML accelerator documentation, relevant for AWS DL1/DL2 instance workloads.
-- [Hot Chips Symposium](https://www.hotchips.org) - Annual symposium proceedings covering cutting-edge processor, accelerator, and memory architecture from industry and academia.
+- [Hot Chips Symposium](https://www.hotchips.org/archives/) - Annual symposium proceedings covering cutting-edge processor, accelerator, and memory architecture from industry and academia.
 
 ## ML Frameworks
 
@@ -117,6 +132,15 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [MSCCL++](https://github.com/microsoft/mscclpp) 🛠️ - Microsoft's low-latency collective communication library with direct GPU kernel integration for fine-grained control.
 - [MPI Standard](https://www.mpi-forum.org) - Message Passing Interface specification; the foundational collective communication model that NCCL and Gloo are built upon.
 
+## Memory-Efficient Training
+
+- [Gradient Checkpointing](https://github.com/cybertronai/gradient-checkpointing) ⭐ 🛠️ - Recompute activations during the backward pass rather than storing them, trading ~20% compute for ~80% memory reduction.
+- [ZeRO: Memory Optimization Towards Training Trillion Parameter Models](https://arxiv.org/abs/1910.02054) ⭐ 🎓 - Microsoft DeepSpeed's optimizer that partitions optimizer state, gradients, and parameters across devices to enable trillion-parameter training.
+- [Activation Checkpointing in PyTorch](https://pytorch.org/docs/stable/checkpoint.html) 🛠️ - PyTorch's built-in checkpoint utility for trading compute for memory in deep networks.
+- [Mixed-Precision Training](https://arxiv.org/abs/1710.03740) 🎓 - NVIDIA's paper on training with FP16 and FP32 simultaneously using loss scaling, now standard practice for large model training.
+- [bitsandbytes](https://github.com/bitsandbytes-foundation/bitsandbytes) 🛠️ - Library for 8-bit and 4-bit quantized optimizers and linear layers enabling QLoRA fine-tuning on consumer GPUs.
+- [LoRA: Low-Rank Adaptation](https://arxiv.org/abs/2106.09685) ⭐ 🎓 - Parameter-efficient fine-tuning by decomposing weight updates into low-rank matrices, reducing trainable parameters by orders of magnitude.
+
 ## Inference and Serving
 
 - [vLLM](https://github.com/vllm-project/vllm) ⭐ 🛠️ - High-throughput LLM serving engine using PagedAttention for efficient KV cache management. Industry standard for production LLM serving.
@@ -125,18 +149,70 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [llama.cpp](https://github.com/ggerganov/llama.cpp) 🛠️ - Pure C/C++ LLM inference with quantization support. Runs on CPUs and Apple Silicon without framework dependencies.
 - [Triton Inference Server](https://github.com/triton-inference-server/server) 🛠️ - NVIDIA's production-grade model serving platform with dynamic batching, model ensembles, and multi-framework support.
 - [ONNX Runtime](https://onnxruntime.ai) 🛠️ - Cross-platform, high-performance inference engine for ONNX models across CPU, GPU, and edge targets.
-- [PagedAttention](https://arxiv.org/abs/2309.06180) ⭐ 🎓 - vLLM's key paper on virtual memory-inspired KV cache management enabling high-throughput LLM serving without memory waste.
+- [PagedAttention paper](https://arxiv.org/pdf/2309.06180) ⭐ 🎓 - vLLM's key paper on virtual memory-inspired KV cache management enabling high-throughput LLM serving without memory waste.
 - [Speculative Decoding](https://arxiv.org/abs/2211.17192) 🎓 - Technique for accelerating autoregressive generation using a small draft model to propose tokens verified by the full model.
 - [Continuous Batching for LLM Inference](https://www.anyscale.com/blog/continuous-batching-llm-inference) ⭐ - Anyscale's explanation of iteration-level batching, the key scheduling innovation behind modern high-throughput LLM serving.
+- [Ollama](https://github.com/ollama/ollama) 🛠️ - Simple local LLM serving with automatic quantization and hardware detection, ideal for development and edge deployment.
 
 ## Quantization and Compression
 
 - [GPTQ](https://arxiv.org/abs/2210.17323) ⭐ 🎓 - Post-training quantization for generative models enabling 4-bit inference of large language models with minimal accuracy loss.
 - [AWQ (Activation-aware Weight Quantization)](https://arxiv.org/abs/2306.00978) 🎓 - Hardware-efficient 4-bit quantization that preserves salient weights identified by activation magnitude analysis.
-- [bitsandbytes](https://github.com/TimDettmers/bitsandbytes) 🛠️ - Library for 8-bit and 4-bit quantized optimizers and linear layers in PyTorch. Enables QLoRA fine-tuning on consumer GPUs.
 - [SparseGPT](https://arxiv.org/abs/2301.00774) 🎓 - One-shot unstructured pruning for large language models achieving 50% sparsity without retraining.
 - [Knowledge Distillation Survey](https://arxiv.org/abs/2006.05525) 🎓 - Comprehensive survey of knowledge distillation techniques for model compression across architectures and tasks.
 - [GGUF Format](https://github.com/ggerganov/ggml/blob/master/docs/gguf.md) - File format used by llama.cpp for quantized model storage and memory-mapped loading on CPU and GPU.
+
+## RLHF Infrastructure
+
+- [OpenRLHF](https://github.com/OpenRLHF/OpenRLHF) ⭐ 🛠️ - Production-ready end-to-end RLHF framework combining Ray, DeepSpeed ZeRO-3, and vLLM for scalable policy optimization.
+- [TRL (Transformer Reinforcement Learning)](https://huggingface.co/docs/trl) ⭐ 🛠️ - Hugging Face library for RLHF, GRPO, DPO, and PPO fine-tuning of language models with a clean trainer API.
+- [veRL](https://github.com/volcengine/verl) 🛠️ - ByteDance's RLHF training framework with fine-grained parallelism and efficient GPU utilization for large-scale policy training.
+- [RLHF Book (full text)](https://rlhfbook.com/book) ⭐ - Comprehensive free guide to the full RLHF pipeline covering reward modeling, PPO, DPO, and alignment techniques.
+- [RLHF: Reinforcement Learning from Human Feedback Survey](https://arxiv.org/abs/2504.12501) 🎓 - Up-to-date survey of RLHF methods, reward modeling, and alignment infrastructure.
+- [RLHF Reward Modeling Recipes](https://github.com/RLHFlow/RLHF-Reward-Modeling) 🛠️ - Practical recipes and code for training state-of-the-art reward models for RLHF pipelines.
+
+## Vector Databases and Retrieval
+
+- [Milvus](https://milvus.io) ⭐ 🛠️ - Open-source distributed vector database optimized for billion-scale similarity search with GPU acceleration.
+- [Qdrant](https://qdrant.tech) 🛠️ - High-performance open-source vector database written in Rust with filtering, payload indexing, and on-disk storage.
+- [Weaviate](https://weaviate.io) 🛠️ - Open-source vector database with built-in hybrid search combining vector similarity with BM25 keyword search.
+- [pgvector](https://github.com/pgvector/pgvector) 🛠️ - Vector similarity search extension for PostgreSQL. Simplest path to production vector search for teams already on Postgres.
+- [Chroma](https://www.trychroma.com) 🛠️ - Lightweight embeddable vector database designed for LLM application development. Easy to run locally.
+- [FAISS](https://github.com/facebookresearch/faiss) ⭐ 🛠️ - Facebook AI's library for efficient similarity search and clustering of dense vectors. The foundational building block for most vector databases.
+- [Pinecone](https://www.pinecone.io) 🛠️ - Fully managed serverless vector database with automatic scaling and low-latency retrieval for production RAG systems.
+
+## LLM Evaluation Frameworks
+
+- [DeepEval](https://deepeval.com) ⭐ 🛠️ - Python LLM evaluation framework with 50+ metrics including G-Eval, hallucination detection, and RAG-specific evaluators using LLM-as-a-judge.
+- [RAGAS](https://docs.ragas.io) 🛠️ - Evaluation framework specifically designed for retrieval-augmented generation systems, measuring faithfulness, relevancy, and context precision.
+- [TruLens](https://www.trulens.org) 🛠️ - LLM feedback and observability framework for iterative evaluation with human and automated feedback integration.
+- [LM Evaluation Harness](https://github.com/EleutherAI/lm-evaluation-harness) ⭐ 🛠️ - EleutherAI's unified framework for evaluating language models across hundreds of benchmarks. Used by the Open LLM Leaderboard.
+- [BERTScore](https://github.com/Tiiiger/bert_score) 🛠️ - Neural text evaluation metric using contextual embeddings for semantic similarity scoring of generated outputs.
+- [MT-Bench](https://arxiv.org/abs/2306.05685) 🎓 - Multi-turn benchmark using GPT-4 as judge to evaluate instruction-following and reasoning ability of chat models.
+
+## LLM Observability and Tracing
+
+- [Langfuse](https://langfuse.com) ⭐ 🛠️ - Open-source LLM observability platform with full request tracing, evaluation, and prompt management via OpenTelemetry.
+- [Phoenix (Arize)](https://phoenix.arize.com) 🛠️ - Open-source ML observability tool for tracing LLM applications, evaluating outputs, and detecting drift in CV and tabular models.
+- [OpenLLMetry](https://www.traceloop.com) 🛠️ - Non-intrusive OpenTelemetry-based instrumentation for LLM applications. Supports OpenAI SDK, LangChain, and most major frameworks.
+- [LangSmith](https://smith.langchain.com) 🛠️ - LangChain's platform for tracing, evaluating, and deploying LLM applications with debugging tools for chain and agent runs.
+- [Helicone](https://www.helicone.ai) 🛠️ - LLM observability proxy for logging, caching, rate limiting, and optimizing LLM API calls across providers.
+- [Evidently AI](https://www.evidentlyai.com) 🛠️ - Open-source ML monitoring library for detecting data drift, concept drift, and model performance degradation in production.
+
+## Synthetic Data Generation
+
+- [NeMo Curator](https://github.com/NVIDIA/NeMo-Curator) ⭐ 🛠️ - NVIDIA's scalable data curation library with pre-built pipelines for synthetic data generation used in training Nemotron-4 340B.
+- [Distilabel](https://github.com/argilla-io/distilabel) 🛠️ - Framework for generating synthetic datasets and AI feedback using LLM pipelines, built on top of the Argilla ecosystem.
+- [DataDreamer](https://github.com/datadreamer-dev/DataDreamer) 🛠️ - Library for synthetic data generation, prompt-based data augmentation, and dataset creation from existing models.
+- [The Data-Centric AI Resource Hub](https://datacentricai.org) - Andrew Ng's initiative on systematic data engineering for ML with tools and benchmarks for data quality improvement.
+
+## Multi-Modal Systems
+
+- [CLIP](https://github.com/openai/CLIP) ⭐ 🛠️ - OpenAI's contrastive image-language pretraining model. Foundational architecture for multimodal retrieval and zero-shot classification.
+- [LLaVA](https://llava-vl.github.io) 🛠️ - Large Language and Vision Assistant; instruction-tuned multimodal model for visual question answering built on LLaMA.
+- [BLIP-2](https://arxiv.org/abs/2301.12597) 🎓 - Salesforce's bootstrapped vision-language pretraining framework using a lightweight Querying Transformer to bridge image and text encoders.
+- [ImageBind](https://github.com/facebookresearch/ImageBind) 🛠️ - Meta's model binding six modalities (image, text, audio, depth, thermal, IMU) into a single embedding space.
+- [Open Flamingo](https://github.com/mlfoundations/open_flamingo) 🛠️ - Open-source reproduction of DeepMind's Flamingo multimodal LLM supporting in-context learning with interleaved images and text.
 
 ## Benchmarking and Profiling
 
@@ -154,18 +230,35 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [WebDataset](https://github.com/webdataset/webdataset) 🛠️ - Streaming dataset format for large-scale training from object storage, fully compatible with PyTorch DataLoader.
 - [FFCV](https://ffcv.io) 🛠️ - Fast data loading library that reduces training data pipeline bottlenecks via a binary beton format with asynchronous loading.
 - [Petastorm](https://github.com/uber/petastorm) 🛠️ - Uber's library for training deep learning models directly from Parquet datasets in HDFS or S3.
-- [The Data-Centric AI Resource Hub](https://datacentricai.org) - Andrew Ng's initiative on systematic data engineering for ML with benchmarks and tooling for data quality improvement.
+- [DVC (Data Version Control)](https://dvc.org) 🛠️ - Git-integrated versioning for datasets and models with clean separation of data, training, and deployment lineage.
+- [Delta Lake](https://delta.io) 🛠️ - ACID transactions and versioning for data lakes, enabling reliable ML feature pipelines and reproducible dataset snapshots.
 - [Feature Store Comparison](https://www.featurestore.org) - Community resource comparing feature store architectures including Feast, Hopsworks, and Tecton.
 
 ## MLOps and Production
 
-- [Full Stack Deep Learning](https://fullstackdeeplearning.com) ⭐ - End-to-end course and resource hub for building and operating production ML systems. Covers tooling, testing, monitoring, and deployment.
 - [Kubeflow](https://www.kubeflow.org) 🛠️ - Kubernetes-native ML platform for orchestrating training pipelines, hyperparameter tuning, and serving at scale.
-- [MLflow](https://mlflow.org) 🛠️ - Open-source platform for experiment tracking, model registry, and multi-framework deployment.
+- [MLflow](https://mlflow.org) 🛠️ - Open-source platform for experiment tracking, model registry, and multi-framework deployment. MLflow 3.0 adds GenAI lineage tracking.
 - [Ray](https://www.ray.io) ⭐ 🛠️ - Distributed computing framework for scaling ML workloads with Ray Tune, Ray Train, and Ray Serve as first-class components.
 - [Weights & Biases](https://wandb.ai) 🛠️ - Experiment tracking, artifact versioning, and collaborative ML development platform. Widely adopted in both research and production.
-- [Evidently AI](https://www.evidentlyai.com) 🛠️ - Open-source ML monitoring library for detecting data drift, concept drift, and model performance degradation in production.
+- [ZenML](https://www.zenml.io) 🛠️ - MLOps framework for building portable, reproducible ML pipelines with integrations for RAG, fine-tuning, and evaluation.
+- [Seldon Core](https://github.com/SeldonIO/seldon-core) 🛠️ - Kubernetes-native model serving with canary deployments, A/B testing, and explainability integrations.
 - [The ML Test Score](https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/acd2df674c71b8e26e5b10f9c3e76a0f4b8a4c5.pdf) ⭐ 🎓 - Google's rubric paper defining 28 tests for production ML system readiness across data, model, infrastructure, and monitoring.
+
+## LLMOps Platforms
+
+- [Langfuse](https://langfuse.com/docs) ⭐ 🛠️ - Open-source LLMOps platform combining tracing, evaluation, prompt management, and dataset curation in one tool.
+- [Braintrust](https://www.braintrust.dev) 🛠️ - Evaluation and observability platform for AI teams with CI-integrated benchmarking and human review workflows.
+- [Weights & Biases Weave](https://wandb.ai/site/weave) 🛠️ - W&B's LLMOps product for tracing, evaluating, and iterating on LLM applications built on top of experiment tracking infrastructure.
+- [Databricks MLflow + Unity Catalog](https://www.databricks.com) 🛠️ - Unified data and AI platform with integrated model training, serving, and governance via MLflow and Delta Lake.
+- [GrowthBook](https://www.growthbook.io) 🛠️ - Open-source feature flagging and A/B testing platform for controlled model rollouts and experimentation.
+
+## Deployment Strategies
+
+- [Shadow Deployment for ML Models](https://se-ml.github.io/best_practices/04-shadow_models_prod) ⭐ - Pattern for routing production traffic to a new model silently to validate behavior before cutover without user exposure.
+- [Canary Releases for ML](https://www.qwak.com/post/shadow-deployment-vs-canary-release-of-machine-learning-models) - Gradual traffic shifting (1% to 100%) for validating ML model updates with real users while limiting blast radius.
+- [Blue-Green Deployment](https://martinfowler.com/bliki/BlueGreenDeployment.html) - Instant environment switchover pattern enabling zero-downtime model deployments and immediate rollback capability.
+- [Argo Rollouts](https://argoproj.github.io/rollouts/) 🛠️ - Kubernetes controller for progressive delivery supporting canary, blue-green, and shadow rollout patterns for model serving workloads.
+- [Flagger](https://flagger.app) 🛠️ - Kubernetes progressive delivery operator supporting canary, A/B testing, and blue-green deployments with automated analysis and rollback.
 
 ## Fault Tolerance and Reliability
 
@@ -188,7 +281,6 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [Energy and Policy Considerations for Deep Learning in NLP](https://arxiv.org/abs/1906.02629) ⭐ 🎓 - Strubell et al. analysis of energy and carbon costs of NLP model training that sparked the field of sustainable AI.
 - [CodeCarbon](https://codecarbon.io) 🛠️ - Python tool for automatically measuring and reporting CO2 emissions of ML training runs.
 - [ML CO2 Impact Calculator](https://mlco2.github.io/impact/) 🛠️ - Online calculator for estimating the carbon footprint of ML training jobs across cloud providers and hardware.
-- [EfficientML.ai](https://efficientml.ai) - MIT Han Lab's comprehensive resources on building energy-efficient ML models and systems.
 
 ## Networking and Interconnects
 
@@ -203,7 +295,6 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [Lustre Filesystem](https://www.lustre.org) - Parallel distributed filesystem widely deployed in HPC and ML training clusters for high-throughput checkpoint and dataset I/O.
 - [Alluxio](https://www.alluxio.io) 🛠️ - Data orchestration layer enabling ML frameworks to access training data from multiple storage systems at near-memory speed.
 - [AWS FSx for Lustre](https://aws.amazon.com/fsx/lustre/) - Managed Lustre filesystem tightly integrated with S3; standard choice for high-throughput ML training data access on AWS.
-- [Delta Lake](https://delta.io) 🛠️ - ACID transactions and versioning for data lakes, enabling reliable ML feature pipelines and reproducible dataset snapshots.
 
 ## Edge and Embedded ML
 
@@ -224,11 +315,10 @@ Seminal papers that shaped the field of ML Systems Engineering.
 - [TVM: An Automated End-to-End Optimizing Compiler for Deep Learning (2018)](https://arxiv.org/abs/1802.04799) ⭐ 🎓 - Seminal ML compiler paper introducing learning-based auto-tuning for hardware-specific kernel optimization.
 - [Ray: A Distributed Framework for Emerging AI Applications (2018)](https://arxiv.org/abs/1712.05889) 🎓 - OSDI paper on the Ray distributed execution framework designed for heterogeneous, dynamic ML workloads.
 - [Megatron-LM (2019)](https://arxiv.org/abs/1909.08053) ⭐ 🎓 - Efficient large-scale language model training with intra-layer model parallelism across GPU tensor cores.
-- [ZeRO: Memory Optimization Towards Training Trillion Parameter Models (2020)](https://arxiv.org/abs/1910.02054) ⭐ 🎓 - Microsoft DeepSpeed's memory optimization paper partitioning optimizer state, gradients, and parameters across devices.
 - [FlashAttention (2022)](https://arxiv.org/abs/2205.14135) ⭐ 🎓 - IO-aware exact attention algorithm that became the standard for efficient Transformer training by minimizing HBM memory traffic.
-- [Efficiently Scaling Transformer Inference (2022)](https://arxiv.org/abs/2211.05100) 🎓 - Google's analysis of inference cost and multi-query attention, partition strategies for low-latency production serving.
-- [FlashAttention-2 (2023)](https://arxiv.org/abs/2307.08691) ⭐ 🎓 - Improved IO-aware attention with better parallelism across sequence dimension and work partitioning between warps.
-- [vLLM: PagedAttention (2023)](https://arxiv.org/abs/2309.06180) ⭐ 🎓 - High-throughput LLM serving via virtual memory-inspired KV cache management eliminating fragmentation and enabling sharing.
+- [Efficiently Scaling Transformer Inference (2022)](https://arxiv.org/abs/2211.05100) 🎓 - Google's analysis of inference cost and multi-query attention partition strategies for low-latency production serving.
+- [FlashAttention-2 (2023)](https://arxiv.org/abs/2307.08691) ⭐ 🎓 - Improved IO-aware attention with better parallelism across the sequence dimension and work partitioning between warps.
+- [vLLM: Efficient Memory Management for LLM Serving (2023)](https://arxiv.org/abs/2309.06180) ⭐ 🎓 - High-throughput LLM serving via virtual memory-inspired KV cache management eliminating fragmentation and enabling sharing.
 - [Mixtral of Experts (2024)](https://arxiv.org/abs/2401.04088) 🎓 - Mistral's sparse MoE model paper with systems implications for expert routing, load balancing, and expert parallelism at scale.
 
 ## Blogs and Newsletters
@@ -250,28 +340,26 @@ Seminal papers that shaped the field of ML Systems Engineering.
 - [Hugging Face Forums](https://discuss.huggingface.co) - Community discussions on model optimization, quantization, inference, and ML framework integration.
 - [PyTorch Forums](https://discuss.pytorch.org) - Official PyTorch community forum for framework internals, distributed training questions, and debugging.
 - [r/MachineLearning](https://www.reddit.com/r/MachineLearning/) - Research-focused ML subreddit with strong coverage of systems papers and conference proceedings.
+- [ContinualAI](https://www.continualai.org) - Community and research hub for continual and lifelong learning, with an annual conference (CoLLAs).
 
 ## Conferences and Venues
 
 Top peer-reviewed venues for ML systems research and engineering.
 
-- [MLSys](https://mlsys.org) ⭐ - The dedicated ML systems conference covering training, inference, compilers, hardware, and data pipelines.
+- [MLSys](https://mlsys.org/Conferences/2025) ⭐ - The dedicated ML systems conference covering training, inference, compilers, hardware, and data pipelines.
 - [OSDI](https://www.usenix.org/conference/osdi24) ⭐ - USENIX operating systems conference. Frequently publishes landmark ML systems papers (Ray, Orca, AlpaServe).
 - [SOSP](https://sosp2023.mpi-sws.org) - ACM Symposium on Operating Systems Principles. Top venue for distributed systems and infrastructure research.
 - [ASPLOS](https://www.asplos-conference.org) - Architecture, Programming Languages, and Operating Systems. Covers hardware-software co-design for ML accelerators.
 - [SC (Supercomputing)](https://supercomputing.org) - The HPC conference covering distributed training at scale, interconnects, and parallel I/O for ML workloads.
-- [Hot Chips](https://www.hotchips.org) - Industry symposium on cutting-edge processor and accelerator design from companies and research labs.
 - [ISCA](https://iscaconf.org) - International Symposium on Computer Architecture. Covers ML accelerator microarchitecture and memory system design.
 - [EuroSys](https://2024.eurosys.org) - European systems conference with a strong distributed ML and storage systems track.
 - [NeurIPS (Systems Track)](https://neurips.cc) - ML research conference with a systems-focused track on efficient training, serving, and deployment.
-
----
 
 ## Contribute
 
 Contributions welcome! Read the [contribution guidelines](CONTRIBUTING.md) first.
 
-## License
+---
 
 [![CC0](https://licensebuttons.net/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
 

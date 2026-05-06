@@ -26,17 +26,17 @@ Thank you for considering contributing to **Awesome ML Systems Engineering**! Th
 
 A resource should meet **all** of the following:
 
-- **Relevant** -- directly useful to someone working on or learning ML Systems Engineering (training, inference, compilers, hardware, distributed systems, data pipelines, MLOps, or adjacent topics).
-- **High quality** -- well-written, accurate, and maintained. Abandoned or outdated resources should not be added.
-- **Publicly accessible** -- free to access, or at minimum has meaningful free content (paywalled content is acceptable if widely considered essential).
-- **Non-promotional** -- not a vendor landing page, marketing material, or SEO content. Official documentation from open-source projects is fine.
+- **Relevant** - directly useful to someone working on or learning ML Systems Engineering (training, inference, compilers, hardware, distributed systems, data pipelines, MLOps, or adjacent topics).
+- **High quality** - well-written, accurate, and maintained. Abandoned or outdated resources should not be added.
+- **Publicly accessible** - free to access, or at minimum has meaningful free content (paywalled content is acceptable if widely considered essential).
+- **Non-promotional** - not a vendor landing page, marketing material, or SEO content. Official documentation from open-source projects is fine.
 
 ## What NOT to Submit
 
 - Personal blogs with only one relevant post (link to the post in an existing section instead if it's exceptional).
 - Tools or libraries that are experimental, unmaintained, or have fewer than 50 GitHub stars (unless uniquely valuable and the only resource of its kind).
 - Courses or books that are purely introductory ML with no systems focus.
-- Duplicate resources -- if it's already covered by a linked resource, it probably does not need its own entry.
+- Duplicate resources - if it's already covered by a linked resource, it probably does not need its own entry.
 
 ## Adding a New Section
 
