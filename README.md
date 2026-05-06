@@ -47,7 +47,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 
 ## Foundations
 
-- [CS249r: Machine Learning Systems](https://mlsysbook.ai) ⭐ - Harvard's open textbook covering the full ML systems stack across two volumes: from neural computation to fleet-scale operations. The most comprehensive free reference in the field.
+- [CS249r: Machine Learning Systems](https://mlsysbook.ai) - ⭐ Harvard's open textbook covering the full ML systems stack across two volumes: from neural computation to fleet-scale operations. The most comprehensive free reference in the field.
 - [MLSys Conference Proceedings](https://mlsys.org) - The premier peer-reviewed venue for ML systems research. All proceedings are freely available.
 - [The Deep Learning Compilation Survey](https://arxiv.org/abs/2002.08794) 🎓 - Comprehensive survey of deep learning compiler techniques; essential reading before diving into compiler backends.
 - [Awesome ML Systems (GPU Mode)](https://github.com/gpu-mode/awesomeMLSys) - GPU Mode community's onboarding reading list, strong on GPU kernel and attention mechanism resources.
@@ -56,17 +56,17 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 
 ## Books
 
-- [CS249r: Machine Learning Systems (Vol I & II)](https://mlsysbook.ai/contents/intro.html) ⭐ - Open-access two-volume textbook from Harvard covering ML workflows, hardware acceleration, distributed training, and responsible engineering.
+- [CS249r: Machine Learning Systems (Vol I & II)](https://mlsysbook.ai/contents/intro.html) - ⭐ Open-access two-volume textbook from Harvard covering ML workflows, hardware acceleration, distributed training, and responsible engineering.
 - [Programming Massively Parallel Processors](https://www.elsevier.com/books/programming-massively-parallel-processors/kirk/978-0-323-91231-0) - Standard textbook for GPU programming with CUDA. Essential for anyone writing custom kernels.
-- [Designing Data-Intensive Applications](https://dataintensive.net) ⭐ - Systems thinking for data pipelines, storage, and reliability. Directly applicable to ML data infrastructure.
+- [Designing Data-Intensive Applications](https://dataintensive.net) - ⭐ Systems thinking for data pipelines, storage, and reliability. Directly applicable to ML data infrastructure.
 - [Distributed Systems: Principles and Paradigms](https://www.distributed-systems.net/index.php/books/ds4/) - Foundational distributed systems theory that underpins distributed ML training. Available free online.
 - [High Performance Python](https://www.oreilly.com/library/view/high-performance-python/9781492055013/) - Profiling and optimization techniques for Python-based ML workflows.
-- [RLHF Book](https://rlhfbook.com) ⭐ - Comprehensive free guide to the full RLHF pipeline from reward modeling to policy optimization.
+- [RLHF Book](https://rlhfbook.com) - ⭐ Comprehensive free guide to the full RLHF pipeline from reward modeling to policy optimization.
 
 ## Courses
 
 - [CS249r: TinyML and Efficient Deep Learning](https://efficientml.ai/courses/) 🎓 - MIT course on efficient ML covering quantization, pruning, and hardware-aware neural architecture design.
-- [Full Stack Deep Learning](https://fullstackdeeplearning.com/course/) ⭐ - End-to-end course on building and deploying ML-powered products; strong on MLOps, tooling, and production.
+- [Full Stack Deep Learning](https://fullstackdeeplearning.com/course/) - ⭐ End-to-end course on building and deploying ML-powered products; strong on MLOps, tooling, and production.
 - [GPU Mode Lectures](https://github.com/gpu-mode/lectures) 🎓 - Community lecture series on GPU programming, CUDA, and Triton kernel development. Freely available on YouTube.
 - [Stanford CS149: Parallel Computing](https://gfxcourses.stanford.edu/cs149/fall23) 🎓 - Foundational parallel computing course covering SIMD, multithreading, GPU architecture, and cache optimization.
 - [CMU 15-418/618: Parallel Computer Architecture and Programming](https://www.cs.cmu.edu/~418/) 🎓 - Deep dive into parallel hardware and programming models from CMU. Slides and assignments publicly available.
@@ -78,7 +78,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 
 ## Hardware and Accelerators
 
-- [NVIDIA CUDA Programming Guide](https://docs.nvidia.com/cuda/cuda-c-programming-guide/) ⭐ - The authoritative reference for CUDA GPU programming. Covers memory hierarchy, thread model, and execution model in depth.
+- [NVIDIA CUDA Programming Guide](https://docs.nvidia.com/cuda/cuda-c-programming-guide/) - ⭐ The authoritative reference for CUDA GPU programming. Covers memory hierarchy, thread model, and execution model in depth.
 - [NVIDIA Hopper Architecture Whitepaper](https://resources.nvidia.com/en-us-tensor-core/gtc22-whitepaper-hopper) - Deep technical dive into H100 GPU architecture including Transformer Engine, NVLink 4.0, and HBM3.
 - [Google TPU System Architecture](https://cloud.google.com/tpu/docs/system-architecture-tpu-vm) - Official documentation on TPU pod architecture, memory hierarchy, and high-speed interconnects.
 - [AMD ROCm Documentation](https://rocm.docs.amd.com/) - AMD's open GPU compute platform documentation. Increasingly relevant for large-scale training workloads.
@@ -90,14 +90,14 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [PyTorch](https://pytorch.org) ⭐ 🛠️ - The dominant research and production training framework. Deep documentation on autograd, TorchScript, and distributed training primitives.
 - [JAX](https://github.com/google/jax) ⭐ 🛠️ - Google's composable function transformations (grad, jit, vmap, pmap) on top of XLA. Preferred for high-performance research code.
 - [TensorFlow](https://www.tensorflow.org) 🛠️ - Google's production ML framework with strong TFX ecosystem for data pipelines, serving, and model management.
-- [torch.compile (PyTorch 2.x)](https://pytorch.org/docs/stable/torch.compiler.html) ⭐ - Graph capture and compilation system bridging eager execution and compiler-level optimization in PyTorch 2.0+.
+- [torch.compile (PyTorch 2.x)](https://pytorch.org/docs/stable/torch.compiler.html) - ⭐ Graph capture and compilation system bridging eager execution and compiler-level optimization in PyTorch 2.0+.
 - [Flax](https://github.com/google/flax) 🛠️ - Neural network library built on JAX for flexible, high-performance model development. Used internally at Google DeepMind.
 - [ONNX](https://onnx.ai) 🛠️ - Open standard for representing ML models enabling interoperability across frameworks and hardware targets.
 
 ## Neural Network Compilers
 
 - [TVM (Apache)](https://tvm.apache.org) ⭐ 🛠️ - End-to-end deep learning compiler stack supporting CPUs, GPUs, and custom accelerators. Includes Ansor for learning-based auto-tuning.
-- [MLIR](https://mlir.llvm.org) ⭐ - Multi-level intermediate representation framework from LLVM. The backbone of modern ML compiler infrastructure across XLA, IREE, and Torch-MLIR.
+- [MLIR](https://mlir.llvm.org) - ⭐ Multi-level intermediate representation framework from LLVM. The backbone of modern ML compiler infrastructure across XLA, IREE, and Torch-MLIR.
 - [XLA](https://www.tensorflow.org/xla) - Accelerated Linear Algebra compiler used by JAX and TensorFlow. Generates highly optimized GPU/TPU kernels via operation fusion.
 - [Triton](https://triton-lang.org) ⭐ 🛠️ - OpenAI's Python-based language and compiler for writing GPU kernels at high productivity. Used to implement FlashAttention and PagedAttention.
 - [IREE](https://iree.dev) 🛠️ - Intermediate Representation Execution Environment; a compiler and runtime for running ML models on diverse hardware targets including mobile.
@@ -106,7 +106,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 
 ## Kernel Programming
 
-- [Triton Tutorials](https://triton-lang.org/main/getting-started/tutorials/index.html) ⭐ - Official step-by-step tutorials for writing GPU kernels in Triton, from vector addition to fused softmax to FlashAttention.
+- [Triton Tutorials](https://triton-lang.org/main/getting-started/tutorials/index.html) - ⭐ Official step-by-step tutorials for writing GPU kernels in Triton, from vector addition to fused softmax to FlashAttention.
 - [CUTLASS](https://github.com/NVIDIA/cutlass) 🛠️ - NVIDIA's CUDA Templates for Linear Algebra Subroutines. High-performance GEMM and convolution primitives used inside cuDNN and TensorRT.
 - [FlashAttention](https://github.com/Dao-AILab/flash-attention) ⭐ 🛠️ - IO-aware attention implementation that tiles computation to minimize HBM reads/writes. Standard for efficient Transformer training and inference.
 - [cuDNN Developer Guide](https://docs.nvidia.com/deeplearning/cudnn/developer-guide/index.html) - NVIDIA's deep learning primitives library documentation; covers convolution algorithms, tensor formats, and fused operations.
@@ -115,7 +115,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 
 ## Distributed Training
 
-- [PyTorch Distributed Overview](https://pytorch.org/tutorials/beginner/dist_overview.html) ⭐ - Official overview of PyTorch distributed APIs: DDP, FSDP, and RPC. Best starting point before diving into framework internals.
+- [PyTorch Distributed Overview](https://pytorch.org/tutorials/beginner/dist_overview.html) - ⭐ Official overview of PyTorch distributed APIs: DDP, FSDP, and RPC. Best starting point before diving into framework internals.
 - [Megatron-LM](https://github.com/NVIDIA/Megatron-LM) ⭐ 🛠️ - NVIDIA's framework for training large language models with tensor parallelism, pipeline parallelism, and data parallelism combined.
 - [DeepSpeed](https://www.deepspeed.ai) 🛠️ - Microsoft's library for training massive models with ZeRO optimizer stages, pipeline parallelism, and CPU/NVMe offloading.
 - [FSDP (Fully Sharded Data Parallel)](https://pytorch.org/docs/stable/fsdp.html) 🛠️ - PyTorch's native ZeRO-style model sharding. The standard approach for training large models within a single PyTorch job.
@@ -127,7 +127,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 ## Collective Communication
 
 - [NCCL](https://developer.nvidia.com/nccl) ⭐ 🛠️ - NVIDIA's Collective Communications Library for multi-GPU and multi-node AllReduce, Broadcast, and Scatter operations. The backbone of most distributed training stacks.
-- [Ring-AllReduce Explained](https://andrew.gibiansky.com/blog/machine-learning/baidu-allreduce/) ⭐ - Baidu's blog post explaining the ring-AllReduce algorithm that underpins bandwidth-optimal data parallel training.
+- [Ring-AllReduce Explained](https://andrew.gibiansky.com/blog/machine-learning/baidu-allreduce/) - ⭐ Baidu's blog post explaining the ring-AllReduce algorithm that underpins bandwidth-optimal data parallel training.
 - [Gloo](https://github.com/facebookincubator/gloo) 🛠️ - Facebook's collective communication library used as the CPU/Ethernet backend in PyTorch distributed.
 - [MSCCL++](https://github.com/microsoft/mscclpp) 🛠️ - Microsoft's low-latency collective communication library with direct GPU kernel integration for fine-grained control.
 - [MPI Standard](https://www.mpi-forum.org) - Message Passing Interface specification; the foundational collective communication model that NCCL and Gloo are built upon.
@@ -149,9 +149,9 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [llama.cpp](https://github.com/ggerganov/llama.cpp) 🛠️ - Pure C/C++ LLM inference with quantization support. Runs on CPUs and Apple Silicon without framework dependencies.
 - [Triton Inference Server](https://github.com/triton-inference-server/server) 🛠️ - NVIDIA's production-grade model serving platform with dynamic batching, model ensembles, and multi-framework support.
 - [ONNX Runtime](https://onnxruntime.ai) 🛠️ - Cross-platform, high-performance inference engine for ONNX models across CPU, GPU, and edge targets.
-- [PagedAttention paper](https://arxiv.org/pdf/2309.06180) ⭐ - vLLM's key paper on virtual memory-inspired KV cache management enabling high-throughput LLM serving without memory waste.
+- [PagedAttention paper](https://arxiv.org/pdf/2309.06180) - ⭐ vLLM's key paper on virtual memory-inspired KV cache management enabling high-throughput LLM serving without memory waste.
 - [Speculative Decoding](https://arxiv.org/abs/2211.17192) 🎓 - Technique for accelerating autoregressive generation using a small draft model to propose tokens verified by the full model.
-- [Continuous Batching for LLM Inference](https://www.anyscale.com/blog/continuous-batching-llm-inference) ⭐ - Anyscale's explanation of iteration-level batching, the key scheduling innovation behind modern high-throughput LLM serving.
+- [Continuous Batching for LLM Inference](https://www.anyscale.com/blog/continuous-batching-llm-inference) - ⭐ Anyscale's explanation of iteration-level batching, the key scheduling innovation behind modern high-throughput LLM serving.
 - [Ollama](https://github.com/ollama/ollama) 🛠️ - Simple local LLM serving with automatic quantization and hardware detection, ideal for development and edge deployment.
 
 ## Quantization and Compression
@@ -167,7 +167,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [OpenRLHF](https://github.com/OpenRLHF/OpenRLHF) ⭐ 🛠️ - Production-ready end-to-end RLHF framework combining Ray, DeepSpeed ZeRO-3, and vLLM for scalable policy optimization.
 - [TRL (Transformer Reinforcement Learning)](https://huggingface.co/docs/trl) ⭐ 🛠️ - Hugging Face library for RLHF, GRPO, DPO, and PPO fine-tuning of language models with a clean trainer API.
 - [veRL](https://github.com/volcengine/verl) 🛠️ - ByteDance's RLHF training framework with fine-grained parallelism and efficient GPU utilization for large-scale policy training.
-- [RLHF Book (full text)](https://rlhfbook.com/book) ⭐ - Comprehensive free guide to the full RLHF pipeline covering reward modeling, PPO, DPO, and alignment techniques.
+- [RLHF Book (full text)](https://rlhfbook.com/book) - ⭐ Comprehensive free guide to the full RLHF pipeline covering reward modeling, PPO, DPO, and alignment techniques.
 - [RLHF: Reinforcement Learning from Human Feedback Survey](https://arxiv.org/abs/2504.12501) 🎓 - Up-to-date survey of RLHF methods, reward modeling, and alignment infrastructure.
 - [RLHF Reward Modeling Recipes](https://github.com/RLHFlow/RLHF-Reward-Modeling) 🛠️ - Practical recipes and code for training state-of-the-art reward models for RLHF pipelines.
 
@@ -216,7 +216,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 
 ## Benchmarking and Profiling
 
-- [MLPerf](https://mlcommons.org/benchmarks/) ⭐ - Industry-standard ML benchmark suite covering training and inference across diverse hardware platforms. The definitive measure of ML system performance.
+- [MLPerf](https://mlcommons.org/benchmarks/) - ⭐ Industry-standard ML benchmark suite covering training and inference across diverse hardware platforms. The definitive measure of ML system performance.
 - [Roofline Model](https://people.eecs.berkeley.edu/~kubitron/cs252/handouts/papers/RooflineVyNoYellow.pdf) ⭐ 🎓 - Performance model for identifying compute vs. memory bottleneck in GPU kernels. Essential mental model for any ML systems engineer.
 - [NVIDIA Nsight Systems](https://developer.nvidia.com/nsight-systems) 🛠️ - System-wide performance analysis tool for GPU workloads, essential for identifying CPU-GPU synchronization and pipeline bottlenecks.
 - [NVIDIA Nsight Compute](https://developer.nvidia.com/nsight-compute) 🛠️ - Kernel-level profiler for CUDA applications with roofline analysis and memory throughput breakdown.
@@ -254,7 +254,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 
 ## Deployment Strategies
 
-- [Shadow Deployment for ML Models](https://se-ml.github.io/best_practices/04-shadow_models_prod) ⭐ - Pattern for routing production traffic to a new model silently to validate behavior before cutover without user exposure.
+- [Shadow Deployment for ML Models](https://se-ml.github.io/best_practices/04-shadow_models_prod) - ⭐ Pattern for routing production traffic to a new model silently to validate behavior before cutover without user exposure.
 - [Canary Releases for ML](https://www.qwak.com/post/shadow-deployment-vs-canary-release-of-machine-learning-models) - Gradual traffic shifting (1% to 100%) for validating ML model updates with real users while limiting blast radius.
 - [Blue-Green Deployment](https://martinfowler.com/bliki/BlueGreenDeployment.html) - Instant environment switchover pattern enabling zero-downtime model deployments and immediate rollback capability.
 - [Argo Rollouts](https://argoproj.github.io/rollouts/) 🛠️ - Kubernetes controller for progressive delivery supporting canary, blue-green, and shadow rollout patterns for model serving workloads.
@@ -269,7 +269,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 
 ## Security and Privacy
 
-- [Federated Learning](https://ai.googleblog.com/2017/04/federated-learning-collaborative.html) ⭐ - Google's seminal blog post introducing the federated learning paradigm for training models without centralizing user data.
+- [Federated Learning](https://ai.googleblog.com/2017/04/federated-learning-collaborative.html) - ⭐ Google's seminal blog post introducing the federated learning paradigm for training models without centralizing user data.
 - [PySyft](https://github.com/OpenMined/PySyft) 🛠️ - Framework for privacy-preserving ML via federated learning, differential privacy, and secure multi-party computation.
 - [Differential Privacy in Deep Learning](https://arxiv.org/abs/1607.00133) 🎓 - Foundational paper applying differential privacy guarantees to deep learning via DP-SGD.
 - [MITRE ATLAS](https://atlas.mitre.org) - MITRE's adversarial ML knowledge base documenting tactics, techniques, and real-world case studies of ML model attacks.
@@ -284,7 +284,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 
 ## Networking and Interconnects
 
-- [NVLink and NVSwitch](https://www.nvidia.com/en-us/data-center/nvlink/) ⭐ - NVIDIA's high-bandwidth GPU interconnect used in DGX and HGX systems. Critical for multi-GPU training performance.
+- [NVLink and NVSwitch](https://www.nvidia.com/en-us/data-center/nvlink/) - ⭐ NVIDIA's high-bandwidth GPU interconnect used in DGX and HGX systems. Critical for multi-GPU training performance.
 - [InfiniBand Architecture](https://www.infinibandta.org) - High-speed networking standard used in HPC and ML clusters enabling RDMA-based collective communication at low latency.
 - [RoCE (RDMA over Converged Ethernet)](https://www.rdmaconsortium.org) - Ethernet-based RDMA alternative to InfiniBand, increasingly used in hyperscale ML clusters.
 - [Google Jupiter Network](https://research.google/pubs/pub43837/) 🎓 - Google's data center network architecture enabling petabit-scale bisection bandwidth for TPU pod training.
@@ -323,8 +323,8 @@ Seminal papers that shaped the field of ML Systems Engineering.
 
 ## Blogs and Newsletters
 
-- [Chip Huyen's Blog](https://huyenchip.com/blog/) ⭐ - In-depth posts on ML systems, real-time ML, vector databases, and production ML engineering from a practitioner perspective.
-- [Lilian Weng's Blog](https://lilianweng.github.io) ⭐ - Deep technical write-ups on ML research with strong coverage of efficiency, attention mechanisms, and systems topics.
+- [Chip Huyen's Blog](https://huyenchip.com/blog/) - ⭐ In-depth posts on ML systems, real-time ML, vector databases, and production ML engineering from a practitioner perspective.
+- [Lilian Weng's Blog](https://lilianweng.github.io) - ⭐ Deep technical write-ups on ML research with strong coverage of efficiency, attention mechanisms, and systems topics.
 - [Sebastian Raschka's Ahead of AI](https://magazine.sebastianraschka.com) - Practical ML engineering articles on LLM training, fine-tuning, evaluation, and research trends.
 - [NVIDIA Technical Blog](https://developer.nvidia.com/blog/) - Deep technical posts on GPU computing, CUDA optimization, and ML systems from NVIDIA engineers.
 - [PyTorch Blog](https://pytorch.org/blog/) - Official blog covering PyTorch internals, new features, compiler updates, and performance improvements.
@@ -334,7 +334,7 @@ Seminal papers that shaped the field of ML Systems Engineering.
 
 ## Communities
 
-- [GPU Mode Discord](https://discord.gg/gpumode) ⭐ - Active community of GPU kernel programmers covering CUDA, Triton, and ML systems. Home of the GPU Mode lecture series.
+- [GPU Mode Discord](https://discord.gg/gpumode) - ⭐ Active community of GPU kernel programmers covering CUDA, Triton, and ML systems. Home of the GPU Mode lecture series.
 - [MLOps Community](https://mlops.community) - Slack and podcast community focused on production ML, feature stores, model monitoring, and MLOps best practices.
 - [Eleuther AI Discord](https://www.eleutherai.org) - Open-source LLM research community with deep expertise in large-scale distributed training and dataset curation.
 - [Hugging Face Forums](https://discuss.huggingface.co) - Community discussions on model optimization, quantization, inference, and ML framework integration.
@@ -346,8 +346,8 @@ Seminal papers that shaped the field of ML Systems Engineering.
 
 Top peer-reviewed venues for ML systems research and engineering.
 
-- [MLSys](https://mlsys.org/Conferences/2025) ⭐ - The dedicated ML systems conference covering training, inference, compilers, hardware, and data pipelines.
-- [OSDI](https://www.usenix.org/conference/osdi24) ⭐ - USENIX operating systems conference. Frequently publishes landmark ML systems papers (Ray, Orca, AlpaServe).
+- [MLSys](https://mlsys.org/Conferences/2025) - ⭐ The dedicated ML systems conference covering training, inference, compilers, hardware, and data pipelines.
+- [OSDI](https://www.usenix.org/conference/osdi24) - ⭐ USENIX operating systems conference. Frequently publishes landmark ML systems papers (Ray, Orca, AlpaServe).
 - [SOSP](https://sosp2023.mpi-sws.org) - ACM Symposium on Operating Systems Principles. Top venue for distributed systems and infrastructure research.
 - [ASPLOS](https://www.asplos-conference.org) - Architecture, Programming Languages, and Operating Systems. Covers hardware-software co-design for ML accelerators.
 - [SC (Supercomputing)](https://supercomputing.org) - The HPC conference covering distributed training at scale, interconnects, and parallel I/O for ML workloads.
