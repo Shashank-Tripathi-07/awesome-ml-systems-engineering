@@ -56,6 +56,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [AutoML and Neural Architecture Search](#automl-and-neural-architecture-search)
 - [CI/CD for ML](#cicd-for-ml)
 - [Real-World Case Studies](#real-world-case-studies)
+- [Contribute](#contribute)
 
 ---
 
