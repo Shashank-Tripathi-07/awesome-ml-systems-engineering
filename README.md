@@ -195,7 +195,6 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [OpenRLHF](https://github.com/OpenRLHF/OpenRLHF) ⭐ 🛠️ - Production-ready end-to-end RLHF framework combining Ray, DeepSpeed ZeRO-3, and vLLM for scalable policy optimization.
 - [TRL (Transformer Reinforcement Learning)](https://huggingface.co/docs/trl) ⭐ 🛠️ - Hugging Face library for RLHF, GRPO, DPO, and PPO fine-tuning of language models with a clean trainer API.
 - [veRL](https://github.com/volcengine/verl) 🛠️ - ByteDance's RLHF training framework with fine-grained parallelism and efficient GPU utilization for large-scale policy training.
-- [RLHF Book (full text)](https://rlhfbook.com) - ⭐ Comprehensive free guide to the full RLHF pipeline covering reward modeling, PPO, DPO, and alignment techniques.
 - [RLHF: Reinforcement Learning from Human Feedback Survey](https://arxiv.org/abs/2504.12501) 🎓 - Up-to-date survey of RLHF methods, reward modeling, and alignment infrastructure.
 - [RLHF Reward Modeling Recipes](https://github.com/RLHFlow/RLHF-Reward-Modeling) 🛠️ - Practical recipes and code for training state-of-the-art reward models for RLHF pipelines.
 
@@ -398,8 +397,8 @@ Top peer-reviewed venues for ML systems research and engineering.
 
 - [SkyPilot](https://github.com/skypilot-org/skypilot) - ⭐ 🛠️ Framework for running LLM training and inference on any cloud at lowest cost using spot/preemptible instances with automatic failover.
 - [SkyPilot Documentation](https://skypilot.readthedocs.io) - 🛠️ Official docs covering multi-cloud job scheduling, cost optimization strategies, and managed spot for ML workloads.
-- [Scaling Laws for Neural Language Models](https://arxiv.org/abs/2001.08361) - ⭐ 🎓 Kaplan et al. paper establishing compute-optimal training tradeoffs between model size, data, and FLOPs; foundational for cost-aware training decisions.
-- [Chinchilla: Training Compute-Optimal Large Language Models](https://arxiv.org/abs/2203.15556) - ⭐ 🎓 DeepMind paper showing most large models are undertrained relative to compute budget; redefined cost-optimal scaling.
+- [Scaling Laws for Neural Language Models](https://arxiv.org/pdf/2001.08361) - ⭐ 🎓 Kaplan et al. paper establishing compute-optimal training tradeoffs between model size, data, and FLOPs; foundational for cost-aware training decisions.
+- [Chinchilla: Training Compute-Optimal Large Language Models](https://arxiv.org/pdf/2203.15556) - ⭐ 🎓 DeepMind paper showing most large models are undertrained relative to compute budget; redefined cost-optimal scaling.
 - [LLM Inference Economics](https://www.baseten.co/blog/llm-transformer-inference-guide/) - Practical breakdown of inference cost components (KV cache, memory bandwidth, batching efficiency) for transformer models.
 - [RunPod](https://www.runpod.io) - 🛠️ GPU cloud marketplace with spot and on-demand instances; commonly used for cost-sensitive training and inference workloads.
 - [Vast.ai](https://vast.ai) - 🛠️ Peer-to-peer GPU rental marketplace offering the lowest-cost GPU access for ML workloads and experimentation.
@@ -481,8 +480,8 @@ Top peer-reviewed venues for ML systems research and engineering.
 ## Experiment Management and Reproducibility
 
 - [Hydra](https://hydra.cc) - ⭐ 🛠️ Framework for elegantly configuring complex ML applications; enables hierarchical config composition and multi-run sweeps from the command line.
-- [DVC (Data Version Control)](https://dvc.org) - ⭐ 🛠️ Git-integrated versioning for datasets and ML experiments with pipeline DAGs, remote storage support, and experiment comparison.
-- [MLflow](https://mlflow.org) - 🛠️ Open-source platform for tracking experiments, packaging code into reproducible runs, and managing the model lifecycle.
+- [DVC (Data Version Control)](https://dvc.org/doc) - ⭐ 🛠️ Git-integrated versioning for datasets and ML experiments with pipeline DAGs, remote storage support, and experiment comparison.
+- [MLflow](https://mlflow.org/docs/latest/index.html) - 🛠️ Open-source platform for tracking experiments, packaging code into reproducible runs, and managing the model lifecycle.
 - [Deterministic Training in PyTorch](https://pytorch.org/docs/stable/notes/randomness.html) - Official PyTorch guide to achieving reproducible results via seed control, deterministic algorithms, and environment variables.
 - [Weights & Biases Sweeps](https://docs.wandb.ai/guides/sweeps) - 🛠️ Hyperparameter sweep tool with Bayesian, grid, and random search; integrates with W&B experiment tracking for reproducible tuning.
 
