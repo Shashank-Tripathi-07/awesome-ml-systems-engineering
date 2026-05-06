@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="120" viewBox="0 0 800 120">
+  <rect width="800" height="120" fill="#0d1117"/>
+  <text x="40" y="52" font-family="monospace" font-size="28" font-weight="bold" fill="#58a6ff">Awesome</text>
+  <text x="185" y="52" font-family="monospace" font-size="28" font-weight="bold" fill="#f0f6fc">ML Systems Engineering</text>
+  <text x="40" y="85" font-family="monospace" font-size="14" fill="#8b949e">Hardware  ·  Compilers  ·  Training  ·  Inference  ·  Serving  ·  Observability  ·  Production</text>
+</svg>

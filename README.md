@@ -1,3 +1,5 @@
+<img src="media/logo.svg" alt="Awesome ML Systems Engineering" width="800"/>
+
 # Awesome ML Systems Engineering [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
 > A curated list of resources covering the full ML Systems Engineering stack: from hardware and compilers to distributed training, inference, and production operations.
@@ -54,7 +56,6 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [AutoML and Neural Architecture Search](#automl-and-neural-architecture-search)
 - [CI/CD for ML](#cicd-for-ml)
 - [Real-World Case Studies](#real-world-case-studies)
-- [Contribute](#contribute)
 
 ---
 
@@ -63,13 +64,13 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [CS249r: Machine Learning Systems](https://mlsysbook.ai) - ⭐ Harvard's open textbook covering the full ML systems stack across two volumes: from neural computation to fleet-scale operations. The most comprehensive free reference in the field.
 - [MLSys Conference Proceedings](https://mlsys.org) - The premier peer-reviewed venue for ML systems research. All proceedings are freely available.
 - [The Deep Learning Compilation Survey](https://arxiv.org/abs/2002.08794) 🎓 - Comprehensive survey of deep learning compiler techniques; essential reading before diving into compiler backends.
-- [Awesome ML Systems (GPU Mode)](https://github.com/gpu-mode/awesomeMLSys) - GPU Mode community's onboarding reading list, strong on GPU kernel and attention mechanism resources.
-- [awesome-seml](https://github.com/SE-ML/awesome-seml) - Curated list on Software Engineering for ML, complementary to this list with a software process angle.
-- [Awesome Production Machine Learning](https://github.com/EthicalML/awesome-production-machine-learning) - Curated list of open-source libraries for deploying, monitoring, versioning, and securing ML models in production.
+- [Awesome ML Systems (GPU Mode)](https://github.com/gpu-mode/awesomeMLSys#readme) - GPU Mode community's onboarding reading list, strong on GPU kernel and attention mechanism resources.
+- [awesome-seml](https://github.com/SE-ML/awesome-seml#readme) - Curated list on Software Engineering for ML, complementary to this list with a software process angle.
+- [Awesome Production Machine Learning](https://github.com/EthicalML/awesome-production-machine-learning#readme) - Curated list of open-source libraries for deploying, monitoring, versioning, and securing ML models in production.
 
 ## Books
 
-- [CS249r: Machine Learning Systems (Vol I & II)](https://mlsysbook.ai/intro.html) - ⭐ Open-access two-volume textbook from Harvard covering ML workflows, hardware acceleration, distributed training, and responsible engineering.
+- [CS249r: Machine Learning Systems (GitHub)](https://github.com/harvard-edge/cs249r_book) - ⭐ Open-access two-volume textbook from Harvard covering ML workflows, hardware acceleration, distributed training, and responsible engineering. Source repo with exercises and labs.
 - [Programming Massively Parallel Processors](https://www.elsevier.com/books/programming-massively-parallel-processors/kirk/978-0-323-91231-0) - Standard textbook for GPU programming with CUDA. Essential for anyone writing custom kernels.
 - [Designing Data-Intensive Applications](https://dataintensive.net) - ⭐ Systems thinking for data pipelines, storage, and reliability. Directly applicable to ML data infrastructure.
 - [Distributed Systems: Principles and Paradigms](https://www.distributed-systems.net/index.php/books/ds4/) - Foundational distributed systems theory that underpins distributed ML training. Available free online.
@@ -180,7 +181,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [Outlines](https://github.com/dottxt-ai/outlines) 🛠️ - Structured text generation library enforcing JSON schema, regex, and grammar constraints on LLM outputs at the token level.
 - [Medusa](https://github.com/FasterDecoding/Medusa) 🛠️ - Speculative decoding framework adding multiple decoding heads to predict several future tokens simultaneously, improving throughput without quality loss.
 - [Disaggregated Prefill for LLM Serving](https://arxiv.org/abs/2401.09670) 🎓 - Paper on separating prefill (prompt processing) and decode phases across different hardware to optimize GPU utilization and latency.
-- [Prefix Caching in vLLM](https://github.com/vllm-project/vllm/blob/main/docs/source/features/automatic_prefix_caching.md) 🛠️ - Automatic prefix caching enabling reuse of KV cache across requests with shared prompt prefixes, reducing redundant computation.
+- [Prefix Caching in vLLM](https://docs.vllm.ai/en/latest/features/automatic_prefix_caching.html) 🛠️ - Automatic prefix caching enabling reuse of KV cache across requests with shared prompt prefixes, reducing redundant computation.
 
 ## Quantization and Compression
 
@@ -296,7 +297,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 
 ## Security and Privacy
 
-- [Federated Learning](https://ai.googleblog.com/2017/04/federated-learning-collaborative.html) - ⭐ Google's seminal blog post introducing the federated learning paradigm for training models without centralizing user data.
+- [Federated Learning](https://blog.research.google/2017/04/federated-learning-collaborative.html) - ⭐ Google's seminal blog post introducing the federated learning paradigm for training models without centralizing user data.
 - [PySyft](https://github.com/OpenMined/PySyft) 🛠️ - Framework for privacy-preserving ML via federated learning, differential privacy, and secure multi-party computation.
 - [Differential Privacy in Deep Learning](https://arxiv.org/abs/1607.00133) 🎓 - Foundational paper applying differential privacy guarantees to deep learning via DP-SGD.
 - [MITRE ATLAS](https://atlas.mitre.org) - MITRE's adversarial ML knowledge base documenting tactics, techniques, and real-world case studies of ML model attacks.
@@ -333,7 +334,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [MCUNet](https://mcunet.mit.edu) ⭐ 🎓 - MIT framework for deploying neural networks on microcontrollers with kilobytes of SRAM via neural architecture search and TinyEngine.
 - [Edge Impulse](https://www.edgeimpulse.com) 🛠️ - End-to-end platform for developing and deploying ML on microcontrollers and edge devices with hardware-in-the-loop testing.
 - [CMSIS-NN](https://arm-software.github.io/CMSIS-NN/latest/) 🛠️ - ARM's optimized neural network kernels for Cortex-M microcontrollers using SIMD intrinsics.
-- [Apache TVM MicroTVM](https://tvm.apache.org/docs/topic/microtvm) 🛠️ - TVM sub-project for compiling and deploying ML models on bare-metal microcontrollers without an OS.
+- [Apache TVM MicroTVM](https://github.com/apache/tvm/tree/main/apps/microtvm) 🛠️ - TVM sub-project for compiling and deploying ML models on bare-metal microcontrollers without an OS.
 - [TinyML Foundation](https://www.tinyml.org) - Community and resource hub for machine learning on extremely constrained devices.
 - [ONNX Runtime Mobile](https://onnxruntime.ai/docs/tutorials/mobile/) 🛠️ - Optimized ONNX Runtime build for mobile and embedded targets with CoreML and NNAPI execution providers.
 
@@ -512,9 +513,3 @@ Top peer-reviewed venues for ML systems research and engineering.
 ## Contribute
 
 Contributions welcome! Read the [contribution guidelines](CONTRIBUTING.md) first.
-
----
-
-[![CC0](https://licensebuttons.net/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
-
-To the extent possible under law, [Shashank Tripathi](https://github.com/Shashank-Tripathi-07) has waived all copyright and related or neighboring rights to this work.

@@ -37,39 +37,16 @@ jobs:
             --max-retries 3
             --retry-wait-time 5
             --timeout 30
+            --accept 403,429,999
             --exclude "reddit\\.com"
             --exclude "linkedin\\.com"
             --exclude "twitter\\.com"
             --exclude "x\\.com"
+            --exclude "discord\\.gg"
+            --exclude "discord\\.com"
             --exclude "elsevier\\.com"
             --exclude "oreilly\\.com"
             --exclude "coursera\\.org"
-            --exclude "hotchips\\.org"
-            --exclude "people\\.eecs\\.berkeley\\.edu"
-            --exclude "static\\.googleusercontent\\.com"
-            --exclude "rocm\\.docs\\.amd\\.com"
-            --exclude "docs\\.habana\\.ai"
-            --exclude "run\\.ai"
-            --exclude "docs\\.ray\\.io"
-            --exclude "fullstackdeeplearning\\.com"
-            --exclude "uber\\.com"
-            --exclude "netflixtechblog\\.com"
-            --exclude "usenix\\.org"
-            --exclude "groq\\.com"
-            --exclude "sambanova\\.ai"
-            --exclude "discord\\.gg"
-            --exclude "discord\\.com"
-            --exclude "dl\\.acm\\.org"
-            --exclude "proceedings\\.neurips\\.cc"
-            --exclude "engineering\\.fb\\.com"
-            --exclude "engineering\\.linkedin\\.com"
-            --exclude "databricks\\.com"
-            --exclude "wandb\\.ai"
-            --exclude "pinecone\\.io"
-            --exclude "braintrust\\.dev"
-            --exclude "ai\\.googleblog\\.com"
-            --exclude "nvidia\\.com"
-            --exclude "arm\\.software\\.github\\.io"
             README.md
           fail: true
         env:
