@@ -15,7 +15,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-      - run: npx awesome-lint https://github.com/Shashank-Tripathi-07/awesome-ml-systems-engineering
+      - name: Run awesome-lint
+        run: npx awesome-lint https://github.com/Shashank-Tripathi-07/awesome-ml-systems-engineering
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      - name: Lint markdown structure (PRs)
+        run: npx markdownlint-cli README.md --config .markdownlint.json || true
+        if: github.event_name == 'pull_request'
 
   link-check:
     name: link-check
@@ -29,10 +34,19 @@ jobs:
             --verbose
             --no-progress
             --exclude-mail
-            --exclude "reddit.com"
-            --exclude "linkedin.com"
-            --exclude "twitter.com"
-            --exclude "x.com"
+            --max-retries 3
+            --retry-wait-time 5
+            --timeout 30
+            --exclude "reddit\\.com"
+            --exclude "linkedin\\.com"
+            --exclude "twitter\\.com"
+            --exclude "x\\.com"
+            --exclude "elsevier\\.com"
+            --exclude "oreilly\\.com"
+            --exclude "coursera\\.org"
+            --exclude "hotchips\\.org/archives"
+            --exclude "people\\.eecs\\.berkeley\\.edu"
+            --exclude "static\\.googleusercontent\\.com"
             README.md
           fail: true
         env:

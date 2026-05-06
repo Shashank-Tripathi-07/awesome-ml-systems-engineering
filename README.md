@@ -148,7 +148,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [Activation Checkpointing in PyTorch](https://pytorch.org/docs/stable/checkpoint.html) 🛠️ - PyTorch's built-in checkpoint utility for trading compute for memory in deep networks.
 - [Mixed-Precision Training](https://arxiv.org/abs/1710.03740) 🎓 - NVIDIA's paper on training with FP16 and FP32 simultaneously using loss scaling, now standard practice for large model training.
 - [bitsandbytes](https://github.com/bitsandbytes-foundation/bitsandbytes) 🛠️ - Library for 8-bit and 4-bit quantized optimizers and linear layers enabling QLoRA fine-tuning on consumer GPUs.
-- [LoRA: Low-Rank Adaptation](https://arxiv.org/abs/2106.09685) ⭐ 🎓 - Parameter-efficient fine-tuning by decomposing weight updates into low-rank matrices, reducing trainable parameters by orders of magnitude.
+- [LoRA: Low-Rank Adaptation](https://arxiv.org/pdf/2106.09685) ⭐ 🎓 - Parameter-efficient fine-tuning by decomposing weight updates into low-rank matrices, reducing trainable parameters by orders of magnitude.
 
 ## Inference and Serving
 
@@ -206,7 +206,7 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [OpenLLMetry](https://www.traceloop.com) 🛠️ - Non-intrusive OpenTelemetry-based instrumentation for LLM applications. Supports OpenAI SDK, LangChain, and most major frameworks.
 - [LangSmith](https://smith.langchain.com) 🛠️ - LangChain's platform for tracing, evaluating, and deploying LLM applications with debugging tools for chain and agent runs.
 - [Helicone](https://www.helicone.ai) 🛠️ - LLM observability proxy for logging, caching, rate limiting, and optimizing LLM API calls across providers.
-- [Evidently AI](https://www.evidentlyai.com) 🛠️ - Open-source ML monitoring library for detecting data drift, concept drift, and model performance degradation in production.
+- [Evidently AI](https://www.evidentlyai.com/blog) 🛠️ - Open-source ML monitoring library for detecting data drift, concept drift, and model performance degradation in production.
 
 ## Synthetic Data Generation
 
