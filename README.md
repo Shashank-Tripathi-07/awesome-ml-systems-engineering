@@ -41,6 +41,15 @@ ML Systems Engineering sits at the intersection of machine learning and systems 
 - [Blogs and Newsletters](#blogs-and-newsletters)
 - [Communities](#communities)
 - [Conferences and Venues](#conferences-and-venues)
+- [Cost Engineering](#cost-engineering)
+- [Emerging Hardware](#emerging-hardware)
+- [Model Governance and Compliance](#model-governance-and-compliance)
+- [Agentic Systems Infrastructure](#agentic-systems-infrastructure)
+- [PEFT and Model Merging](#peft-and-model-merging)
+- [Cluster Management](#cluster-management)
+- [Data Quality and Contracts](#data-quality-and-contracts)
+- [Continuous Training and Retraining](#continuous-training-and-retraining)
+- [Hyperparameter Optimization](#hyperparameter-optimization)
 - [Contribute](#contribute)
 
 ---
@@ -354,6 +363,90 @@ Top peer-reviewed venues for ML systems research and engineering.
 - [ISCA](https://iscaconf.org) - International Symposium on Computer Architecture. Covers ML accelerator microarchitecture and memory system design.
 - [EuroSys](https://2024.eurosys.org) - European systems conference with a strong distributed ML and storage systems track.
 - [NeurIPS (Systems Track)](https://neurips.cc) - ML research conference with a systems-focused track on efficient training, serving, and deployment.
+
+## Cost Engineering
+
+- [SkyPilot](https://github.com/skypilot-org/skypilot) - ⭐ 🛠️ Framework for running LLM training and inference on any cloud at lowest cost using spot/preemptible instances with automatic failover.
+- [SkyPilot Documentation](https://skypilot.readthedocs.io) - 🛠️ Official docs covering multi-cloud job scheduling, cost optimization strategies, and managed spot for ML workloads.
+- [Scaling Laws for Neural Language Models](https://arxiv.org/abs/2001.08361) - ⭐ 🎓 Kaplan et al. paper establishing compute-optimal training tradeoffs between model size, data, and FLOPs; foundational for cost-aware training decisions.
+- [Chinchilla: Training Compute-Optimal Large Language Models](https://arxiv.org/abs/2203.15556) - ⭐ 🎓 DeepMind paper showing most large models are undertrained relative to compute budget; redefined cost-optimal scaling.
+- [LLM Inference Economics](https://www.baseten.co/blog/llm-transformer-inference-guide/) - Practical breakdown of inference cost components (KV cache, memory bandwidth, batching efficiency) for transformer models.
+- [RunPod](https://www.runpod.io) - 🛠️ GPU cloud marketplace with spot and on-demand instances; commonly used for cost-sensitive training and inference workloads.
+- [Vast.ai](https://vast.ai) - 🛠️ Peer-to-peer GPU rental marketplace offering the lowest-cost GPU access for ML workloads and experimentation.
+
+## Emerging Hardware
+
+- [MLX](https://github.com/ml-explore/mlx) - ⭐ 🛠️ Apple's array framework for ML on Apple Silicon; exploits unified CPU/GPU memory architecture for efficient on-device training and inference.
+- [Groq LPU Architecture](https://groq.com/technology/) - Groq's deterministic Language Processing Unit designed for compiler-scheduled, high-throughput LLM inference with predictable latency.
+- [Cerebras Architecture](https://www.cerebras.net/chip/) - Wafer-Scale Engine architecture placing an entire neural network on a single chip, eliminating inter-chip communication overhead.
+- [Tenstorrent](https://tenstorrent.com) - 🛠️ Open AI hardware company (Jim Keller) building RISC-V-based AI accelerators with open-source software stack; Wormhole and Grayskull architectures.
+- [SambaNova DataScale](https://sambanova.ai) - Reconfigurable Dataflow Architecture designed for large model training and inference with software-defined hardware mapping.
+- [Graphcore IPU](https://www.graphcore.ai/technology) - Intelligence Processing Unit with bulk synchronous parallel execution model suited for sparse and irregular ML workloads.
+
+## Model Governance and Compliance
+
+- [Model Cards for Model Reporting](https://arxiv.org/abs/1810.03993) - ⭐ 🎓 Mitchell et al. paper introducing model cards as a transparency mechanism; now standard practice on Hugging Face Hub.
+- [Hugging Face Model Cards](https://huggingface.co/docs/hub/model-cards) - 🛠️ Official spec and tooling for model cards on the Hub; the de facto standard for documenting ML model metadata and limitations.
+- [OpenLineage](https://openlineage.io) - 🛠️ Open standard for data lineage collection across pipelines; tracks dataset provenance from ingestion through model training.
+- [DataHub](https://datahubproject.io) - 🛠️ Open-source metadata platform for data discovery, lineage, and governance across ML pipelines and feature stores.
+- [lakeFS](https://lakefs.io) - 🛠️ Git-like versioning for data lakes; enables reproducible ML experiments by snapshotting training data at commit time.
+- [AI Fairness 360](https://github.com/Trusted-AI/AIF360) - 🛠️ IBM's open-source toolkit for detecting and mitigating algorithmic bias across the ML lifecycle.
+- [Fairlearn](https://fairlearn.org) - 🛠️ Microsoft's Python library for assessing and improving fairness of ML models with mitigation algorithms and dashboard.
+- [EU AI Act Overview for ML Engineers](https://artificialintelligenceact.eu) - Plain-language guide to the EU AI Act requirements affecting ML system design, documentation, and deployment in regulated contexts.
+
+## Agentic Systems Infrastructure
+
+- [LangGraph](https://github.com/langchain-ai/langgraph) - ⭐ 🛠️ Library for building stateful, multi-actor LLM applications as graphs; handles cycles, branching, and persistence for reliable agent orchestration.
+- [Microsoft AutoGen](https://github.com/microsoft/autogen) - 🛠️ Framework for building multi-agent systems where LLM agents collaborate, debate, and call tools to solve complex tasks.
+- [CrewAI](https://github.com/crewAIInc/crewAI) - 🛠️ Role-based multi-agent framework for orchestrating crews of AI agents with defined goals, tools, and collaboration patterns.
+- [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) - 🛠️ Official Python SDK for building agentic workflows with tool use, handoffs, and guardrails on top of OpenAI models.
+- [AgentBench](https://github.com/THUDM/AgentBench) - 🎓 Benchmark for evaluating LLM agents across real-world environments (OS, database, web), critical for measuring agent system reliability.
+- [Reliability Patterns for LLM Agents](https://www.anthropic.com/research/building-effective-agents) - ⭐ Anthropic's practical guide to building reliable agentic systems with patterns for tool use, error recovery, and multi-step reasoning.
+
+## PEFT and Model Merging
+
+- [LoRA: Low-Rank Adaptation of Large Language Models](https://arxiv.org/abs/2106.09685) - ⭐ 🎓 Hu et al. paper introducing low-rank weight decomposition for parameter-efficient fine-tuning; the foundation of the PEFT ecosystem.
+- [QLoRA: Efficient Finetuning of Quantized LLMs](https://arxiv.org/abs/2305.14314) - ⭐ 🎓 Dettmers et al. paper enabling full fine-tuning of 65B models on a single 48GB GPU via 4-bit quantization and LoRA.
+- [DoRA: Weight-Decomposed Low-Rank Adaptation](https://arxiv.org/abs/2402.09353) - 🎓 Decomposes pretrained weights into magnitude and direction for more stable and accurate PEFT than vanilla LoRA.
+- [LoRA+](https://arxiv.org/abs/2402.12354) - 🎓 Improves LoRA by setting different learning rates for adapter matrices A and B, yielding faster convergence and better performance.
+- [MergeKit](https://github.com/arcee-ai/mergekit) - ⭐ 🛠️ Toolkit for merging pretrained language models using TIES, DARE, SLERP, and other merging algorithms without additional training.
+- [PEFT (Hugging Face)](https://github.com/huggingface/peft) - ⭐ 🛠️ Hugging Face library unifying LoRA, prefix tuning, prompt tuning, IA3, and other PEFT methods with a consistent trainer API.
+
+## Cluster Management
+
+- [Slurm Workload Manager](https://slurm.schedmd.com) - ⭐ 🛠️ The dominant job scheduler for HPC and ML training clusters; handles job queuing, resource allocation, and multi-node GPU reservations.
+- [Slurm + PyTorch DDP Guide](https://pytorch.org/tutorials/intermediate/ddp_series_multinode.html) - Official PyTorch tutorial for launching distributed training jobs across multi-node clusters using Slurm and torchrun.
+- [Kubernetes for ML Workloads](https://kubernetes.io/docs/concepts/workloads/) - Container orchestration standard for production ML serving; basis for Kubeflow, Ray on Kubernetes, and most cloud ML platforms.
+- [Volcano](https://volcano.sh) - 🛠️ Kubernetes-native batch scheduling system for ML workloads; adds gang scheduling, queue management, and GPU topology-aware placement.
+- [Run:ai](https://www.run.ai) - 🛠️ GPU cluster management platform with workload scheduling, GPU virtualization, and utilization analytics for shared ML infrastructure.
+- [Kueue](https://kueue.sigs.k8s.io) - 🛠️ Kubernetes-native job queueing system for managing batch ML workloads with fair sharing, priorities, and resource quotas.
+
+## Data Quality and Contracts
+
+- [Great Expectations](https://greatexpectations.io) - ⭐ 🛠️ Python framework for defining, validating, and documenting data quality expectations as code; standard for ML data pipeline testing.
+- [Apache Iceberg](https://iceberg.apache.org) - ⭐ 🛠️ Open table format for huge analytic datasets with ACID transactions, schema evolution, and time travel; increasingly used as the ML data lake layer.
+- [dbt (data build tool)](https://getdbt.com) - 🛠️ SQL-based transformation framework with testing and lineage; widely used to build reliable feature pipelines feeding ML training.
+- [Soda Core](https://github.com/sodadata/soda-core) - 🛠️ Open-source data quality testing framework with YAML-defined checks and integration into Airflow and dbt pipelines.
+- [Data Contracts (Andrew Jones)](https://andrew-jones.com/blog/data-contracts/) - ⭐ Foundational blog post on data contracts as a systems pattern for ensuring reliability between data producers and ML consumers.
+- [OpenMetadata](https://open-metadata.org) - 🛠️ End-to-end metadata platform covering data discovery, quality, lineage, and collaboration for ML data assets.
+
+## Continuous Training and Retraining
+
+- [Concept Drift Detection Survey](https://arxiv.org/abs/2004.05785) - 🎓 Comprehensive survey of concept drift detection methods, essential background for building retraining trigger systems.
+- [Evidently AI](https://www.evidentlyai.com) - ⭐ 🛠️ Open-source ML monitoring library for detecting data drift, concept drift, and model degradation; generates reports and triggers retraining pipelines.
+- [WhyLabs](https://whylabs.ai) - 🛠️ ML observability platform for continuous monitoring of data quality and model performance with anomaly alerting and drift detection.
+- [Fiddler AI](https://www.fiddler.ai) - 🛠️ Enterprise ML monitoring platform with explainability, fairness, and drift monitoring integrated into continuous training workflows.
+- [River](https://riverml.xyz) - 🛠️ Python library for online machine learning; supports incremental models that update on each new sample without full retraining.
+- [Continual Learning with Neural Networks Survey](https://arxiv.org/abs/1802.07569) - 🎓 Parisi et al. survey covering catastrophic forgetting, replay methods, and architectural approaches to lifelong learning.
+
+## Hyperparameter Optimization
+
+- [Optuna](https://optuna.org) - ⭐ 🛠️ Define-by-run HPO framework with efficient samplers (TPE, CMA-ES) and pruners for early stopping; integrates with PyTorch, TensorFlow, and XGBoost.
+- [Ray Tune](https://docs.ray.io/en/latest/tune/index.html) - ⭐ 🛠️ Distributed hyperparameter tuning library built on Ray; supports Population Based Training, ASHA, and integration with Optuna/Ax searchers.
+- [Ax (Adaptive Experimentation Platform)](https://ax.dev) - 🛠️ Meta's Bayesian optimization platform for HPO and A/B testing; uses BoTorch for GP-based surrogate models.
+- [Hyperband and ASHA](https://arxiv.org/abs/1603.06212) - 🎓 Li et al. paper on Hyperband successive halving algorithm; foundational for modern early-stopping-based HPO used in Ray Tune and Optuna.
+- [Feast (Feature Store)](https://feast.dev) - 🛠️ Open-source feature store for managing, storing, and serving ML features; decouples feature engineering from model training.
+- [Hopsworks Feature Store](https://www.hopsworks.ai) - 🛠️ Enterprise feature store with versioning, lineage, and online/offline serving; one of the most full-featured open-source options.
 
 ## Contribute
 
