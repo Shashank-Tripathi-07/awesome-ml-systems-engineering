@@ -2,13 +2,14 @@
 
 All notable changes to this list are documented here.
 
-## [1.0.0] - 2026-07-04
+## Release 1.0.0 - 2026-07-04
 
 First tagged release.
 
 ### Added
 
-- "Learning Paths by Level" section with beginner, intermediate, and advanced tracks through the list, plus a skill-level legend (🟢/🟡/🔴).
+- Eight collapsible topic groups (Get Started, Hardware Compilers & Kernels, Training at Scale, Inference & Efficiency, LLM & Agentic Systems, Data & Experimentation, Production Governance & Cost, Papers Community & Case Studies) so the list reads as a short, browsable index instead of one long page of 49 flat sections.
+- "Learning Paths by Level" section with beginner, intermediate, and advanced tracks through the list, plus a skill-level legend (green/yellow/red).
 - New sections: Reasoning and Test-Time Compute, On-Device and Mobile LLM Inference, Data Labeling and Annotation.
 - New entries in Agentic Systems Infrastructure (Model Context Protocol), RLHF Infrastructure (Gymnasium, BrowserGym), Memory-Efficient Training (ZeRO-Infinity), Inference and Serving (FlexGen), Fault Tolerance and Reliability (Chaos Mesh), Cost Engineering (Karpenter), LLMOps Platforms (Portkey), and Experiment Management (Sacred).
 - Link from README to ROADMAP.md.
@@ -20,3 +21,4 @@ First tagged release.
 ### Fixed
 
 - Removed duplicate entries (Langfuse, Evidently AI, DVC, MLflow, Scaling Laws, Chinchilla) that appeared verbatim or near-verbatim in two sections; each resource now has a single canonical entry.
+- Removed anchor links that pointed at the same in-page target more than once (the list only allows each internal link to appear once), replacing repeat mentions with plain text pointers.

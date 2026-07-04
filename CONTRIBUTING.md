@@ -38,6 +38,10 @@ A resource should meet **all** of the following:
 - Courses or books that are purely introductory ML with no systems focus.
 - Duplicate resources - if it's already covered by a linked resource, it probably does not need its own entry.
 
+## Structure: Topic Groups and Sections
+
+The README is organized into 8 collapsible topic groups (`<details>` blocks, e.g. "Training at Scale", "Inference & Efficiency"), each containing several sections (e.g. "Distributed Training", "Quantization and Compression"). When adding an entry, find the existing section it belongs to, wherever that section currently lives, rather than assuming it must go at the end of the file.
+
 ## Adding a New Section
 
 If you believe an entire new section is warranted:
@@ -45,6 +49,12 @@ If you believe an entire new section is warranted:
 - Open an issue first to discuss scope before submitting a PR.
 - The section must have at least 5 strong entries.
 - It must not significantly overlap with an existing section.
+- Say which existing topic group it belongs in (or propose a new group if none fit).
+- New sections must use `### Section Name` (not `##`), since `##` is reserved for the 8 topic groups.
+
+## Do Not Link the Same Anchor Twice
+
+`awesome-lint` rejects any internal link (`#some-anchor`) that appears more than once in the document, since each section is already linked exactly once from the Table of Contents. If you want to reference another section from within an entry's description or from prose (like the Learning Paths section), name it in plain text instead of linking it again, e.g. "see the Langfuse entry under LLM Observability and Tracing" rather than `[Langfuse](#llm-observability-and-tracing)`.
 
 ## Updating Existing Entries
 
