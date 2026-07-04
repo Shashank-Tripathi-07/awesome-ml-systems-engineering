@@ -14,6 +14,12 @@ non-deterministic and your correctness criteria are probabilistic.
 The bar is high and it is not going down. This roadmap tells you exactly what
 to build, in what order, and what it proves when you can do it.
 
+You do not need any prior ML background to start Phase 0. Every piece of
+jargon (RDMA, GEMM, KV cache, whatever) is explained in plain language the
+first time it is used, so you can read this start to finish even if you have
+never trained a model. What you cannot skip is the effort: this rewards people
+who actually do the projects, not people who skim.
+
 Part of the [Awesome ML Systems Engineering](README.md) list -- once you know
 which phase you are in, the README has the deeper reading for that specific
 topic.
@@ -48,9 +54,10 @@ an 80,000-step job on a 512-GPU cluster. Find it. Fix it. Prevent it from
 happening again. Do this while 40 engineers are waiting for the checkpoint.
 
 The job is: your inference service is handling 50,000 requests per second and
-p99 latency just spiked to 800ms. Locate the bottleneck. Is it the attention
-kernel, the KV cache eviction policy, the load balancer, or the NCCL ring?
-You have 20 minutes before the SLA breach.
+p99 latency (the response time of your slowest 1% of requests, not the average)
+just spiked to 800ms. Locate the bottleneck. Is it the attention kernel, the KV
+cache eviction policy, the load balancer, or the NCCL ring? You have 20 minutes
+before the SLA breach (the contractual performance promise you are about to violate).
 
 The job is: your 70B model fits in 140GB of HBM across 4 H100s in BF16. The
 team wants to serve it on 2 H100s. Make it work without a quality regression.
@@ -73,7 +80,8 @@ not crash, and when they do crash, making them resume correctly.
 
 **Inference Infrastructure** -- The systems that serve model predictions to users.
 Batching, KV caching, speculative decoding, quantization, hardware-efficient
-kernels, SLO management. You spend most of your time chasing latency and cost.
+kernels, SLO management (SLO: Service Level Objective, an internal target like
+"p99 latency under 200ms"). You spend most of your time chasing latency and cost.
 
 **ML Platform** -- The internal tooling layer: experiment tracking, feature
 stores, model registries, data pipelines, evaluation frameworks. Closer to
@@ -117,15 +125,20 @@ performance, you are not ready.
 
 **Concurrency**: threads, processes, locks, atomics, memory ordering. Know the
 difference between data parallelism and task parallelism. Understand why
-Python's GIL exists and what it prevents.
+Python's GIL (Global Interpreter Lock, which lets only one thread execute
+Python bytecode at a time) exists and what it prevents.
 
 **Networking**: TCP/IP stack, bandwidth vs latency, what a socket is, why
-RDMA exists and what it solves, why InfiniBand is different from Ethernet.
-Distributed training is fundamentally a networking problem.
+RDMA (Remote Direct Memory Access: one machine reads/writes another's memory
+directly, bypassing its CPU) exists and what it solves, why InfiniBand is
+different from Ethernet. Distributed training is fundamentally a networking
+problem.
 
-**Operating systems**: virtual memory, how `mmap` works, what a page fault costs,
-file descriptors, process scheduling. ML data pipelines break in ways that are
-impossible to debug without this.
+**Operating systems**: virtual memory, how `mmap` works (mapping a file
+directly into a process's address space instead of read/write calls), what a
+page fault costs (a stall when the CPU touches memory that is not actually
+resident yet), file descriptors, process scheduling. ML data pipelines break
+in ways that are impossible to debug without this.
 
 Resources that are not optional:
 - [Computer Systems: A Programmer's Perspective](https://csapp.cs.cmu.edu) (Bryant & O'Hallaron) -- read it cover to cover
@@ -138,17 +151,23 @@ Resources that are not optional:
 spaces, norms. Not "I know what a matrix is." You need to be able to derive
 why matrix multiply is O(n^3) and why blocking/tiling makes it cache-efficient.
 
-**Calculus and optimization**: partial derivatives, chain rule, gradient descent,
-Lagrange multipliers, convexity. You need to understand backpropagation by
-deriving it yourself, not by calling `.backward()`.
+**Calculus and optimization**: partial derivatives, chain rule, gradient descent
+(nudging parameters in the direction that reduces the loss fastest), Lagrange
+multipliers (a technique for optimizing a function subject to constraints),
+convexity. You need to understand backpropagation by deriving it yourself, not
+by calling `.backward()`.
 
-**Probability and statistics**: expectation, variance, distributions, MLE,
-Bayesian inference basics, concentration inequalities. Required for understanding
-training dynamics, evaluation, and anything involving uncertainty.
+**Probability and statistics**: expectation, variance, distributions, MLE
+(Maximum Likelihood Estimation: picking the parameters that make the observed
+data most probable), Bayesian inference basics, concentration inequalities.
+Required for understanding training dynamics, evaluation, and anything
+involving uncertainty.
 
-**Numerical methods**: floating point representation, catastrophic cancellation,
-condition numbers, numerical stability. Non-negotiable for anyone writing kernels
-or debugging training instability.
+**Numerical methods**: floating point representation, catastrophic cancellation
+(losing precision when subtracting two nearly-equal floating point numbers),
+condition numbers (how much a small input error gets amplified in the output),
+numerical stability. Non-negotiable for anyone writing kernels or debugging
+training instability.
 
 ### Programming
 
@@ -169,22 +188,35 @@ administration. You will spend significant time on remote machines with no GUI.
 ## Phase 1: ML Fundamentals (2-3 months)
 
 Do not skip this phase because you think you already know it. The ML Systems
-engineer who cannot explain why cross-entropy loss works, what a gradient is,
-or why batch normalization helps training will make wrong decisions at every
+engineer who cannot explain why cross-entropy loss (the standard loss function
+for classification: it penalizes confident wrong predictions much more than
+unsure ones) works, what a gradient is (the direction and size of the nudge
+that would reduce the loss fastest, for each parameter), or why batch
+normalization (rescaling each layer's activations to keep them in a stable
+range during training) helps training will make wrong decisions at every
 level of the stack. The systems are in service of the ML. You have to understand
 what you are serving.
 
 ### What you must actually understand
 
-**Neural networks from scratch**: implement a 2-layer MLP in pure NumPy.
-Forward pass, backward pass, weight update. No frameworks. If you cannot do this,
-you do not understand backpropagation. Stop and do it now.
+**Neural networks from scratch**: implement a 2-layer MLP (multi-layer
+perceptron -- the simplest neural network: stacked linear layers with a
+nonlinearity between them) in pure NumPy. Forward pass (run the input through
+the network to get a prediction), backward pass (compute how much each
+parameter contributed to the error), weight update. No frameworks. If you
+cannot do this, you do not understand backpropagation (the algorithm that
+computes those per-parameter gradients by working backward through the
+network one layer at a time, reusing the chain rule). Stop and do it now.
 
-**The transformer**: implement attention from scratch in NumPy. Query, key, value
-projections, scaled dot-product attention, causal masking, multi-head. Then
-implement a full decoder-only transformer block. Train it on something small
-(character-level Shakespeare, or the addition task). It should overfit the
-training set -- if it does not, your implementation is wrong.
+**The transformer**: implement attention from scratch in NumPy. Attention is
+the mechanism that lets every token look at and weigh every other token when
+building its representation, instead of only seeing a compressed summary of
+what came before. Query, key, value projections, scaled dot-product attention,
+causal masking, multi-head. Then implement a full decoder-only transformer
+block. Train it on something small (character-level Shakespeare, or the
+addition task). It should overfit the training set (memorize it almost
+perfectly, since the point here is testing correctness, not generalization) --
+if it does not, your implementation is wrong.
 
 **Training dynamics**: learn what loss curves look like when things are working
 and when they are not. Understand learning rate warmup, why gradient clipping
@@ -199,8 +231,9 @@ that matters for transformers too.
 
 ### The projects that prove you did this phase
 
-1. Implement backpropagation for a 2-layer MLP without autograd. Get it to
-   classify MNIST to >97% accuracy.
+1. Implement backpropagation for a 2-layer MLP without autograd (the framework
+   machinery, like PyTorch's `.backward()`, that computes gradients for you --
+   write the calculus yourself instead). Get it to classify MNIST to >97% accuracy.
 
 2. Implement multi-head self-attention from scratch in NumPy. Verify it matches
    PyTorch's output on the same inputs.
@@ -209,8 +242,9 @@ that matters for transformers too.
    codebase. Understand every design decision.
 
 4. Reproduce one result from a foundational paper: either the original Transformer
-   on WMT translation, or GPT-2 small language modeling perplexity. Exact match
-   not required, within 2 PPL is sufficient.
+   on WMT translation, or GPT-2 small language modeling perplexity (PPL, a measure
+   of how well the model predicts held-out text -- lower means better predictions).
+   Exact match not required, within 2 PPL is sufficient.
 
 If you cannot do all four, you are not done with Phase 1.
 
@@ -229,9 +263,9 @@ throughput, not latency. Understanding it requires building an accurate mental
 model of:
 
 **Thread hierarchy**: threads, warps (32 threads), thread blocks, grids.
-Every 32 threads in a warp execute the same instruction in lockstep (SIMT).
-Divergent branches within a warp serialize. This is why branchy code is
-catastrophically slow on GPU.
+Every 32 threads in a warp execute the same instruction in lockstep (SIMT:
+Single Instruction, Multiple Threads). Divergent branches within a warp
+serialize. This is why branchy code is catastrophically slow on GPU.
 
 **Memory hierarchy**:
 ```
@@ -246,15 +280,19 @@ is loaded from HBM into shared memory once, reused many times, and results
 written back once. This is exactly what Flash Attention does.
 
 **Compute vs memory bound**: operations that reuse data heavily (matrix multiply)
-are compute-bound -- the bottleneck is the number of FLOPs the hardware can
-execute. Operations that touch memory without reusing it (elementwise ops) are
-memory-bound -- the bottleneck is how fast data moves between HBM and compute
-units. You cannot optimize a memory-bound kernel by adding more compute.
+are compute-bound -- the bottleneck is the number of FLOPs (floating-point
+operations) the hardware can execute. Operations that touch memory without
+reusing it (elementwise ops) are memory-bound -- the bottleneck is how fast
+data moves between HBM and compute units. The ratio of the two, compute
+operations per byte moved, is called arithmetic intensity, and it is the
+single number that tells you which side of that line an operation is on. You
+cannot optimize a memory-bound kernel by adding more compute.
 
 **Occupancy**: the fraction of the maximum possible warps that are resident on
-an SM at once. High occupancy lets the hardware hide memory latency by switching
-to other warps while one waits for a memory load. Low occupancy means idle
-compute units.
+an SM (Streaming Multiprocessor -- the GPU's core compute unit, roughly
+analogous to a CPU core) at once. High occupancy lets the hardware hide memory
+latency by switching to other warps while one waits for a memory load. Low
+occupancy means idle compute units.
 
 ### What to study
 
@@ -302,8 +340,9 @@ across many machines and manage the resulting communication.
 ### Data Parallelism
 
 The simplest form. Replicate the model on N devices. Split the batch N ways.
-Each device computes gradients for its shard. All-reduce the gradients across
-devices. Each device updates its local copy of parameters identically.
+Each device computes gradients for its shard (the slice of the batch it was
+assigned). All-reduce the gradients across devices. Each device updates its
+local copy of parameters identically.
 
 The key operation is **all-reduce**: every device contributes a gradient tensor,
 every device receives the sum. The dominant algorithm is the ring all-reduce:
@@ -318,7 +357,8 @@ Ring all-reduce for N devices:
 
 Implementation: `torch.nn.parallel.DistributedDataParallel` (DDP) or `jax.pmap`.
 Use `torchrun` or `mpirun` to launch. Know how gradient averaging and optimizer
-state are handled across ranks.
+state are handled across ranks (a rank is just a device's index in the job --
+device 0, device 1, and so on).
 
 **The critical bug**: forgetting to synchronize random seeds across ranks. Your
 dropout masks must be different across ranks (different data, different masks),
@@ -395,7 +435,9 @@ throughput.
    matches single-GPU training. Measure the communication overhead using
    PyTorch Profiler. Identify the all-reduce calls in the trace.
 
-2. Implement gradient accumulation correctly with DDP. Specifically: use
+2. Implement gradient accumulation (running several small forward/backward
+   passes and summing their gradients before one optimizer step, to simulate a
+   batch bigger than fits in memory) correctly with DDP. Specifically: use
    `model.no_sync()` for all but the last microbatch to avoid spurious all-reduces.
    Verify that the effective batch size is correct.
 
@@ -435,7 +477,8 @@ for a 7B model with 32 layers, 8 KV heads, head_dim=128, BF16:
 ```
 
 For 2048-token sequences with a batch of 32: 8GB just for KV cache. This is why
-GQA (fewer KV heads) is standard -- it reduces KV cache proportionally.
+GQA (Grouped-Query Attention: several query heads share one KV head instead of
+each having its own) is standard -- it reduces KV cache proportionally.
 
 **[PagedAttention](https://arxiv.org/pdf/2309.06180)** ([vLLM](https://github.com/vllm-project/vllm)): analogous to virtual memory. The KV cache is divided
 into fixed-size blocks. Each sequence gets blocks allocated on demand. Blocks
@@ -501,15 +544,17 @@ depends on the model, the quantization method, and the task. Always measure.
 ### The projects that prove you did this phase
 
 1. Deploy a 7B model using vLLM. Measure throughput (tokens/second) and latency
-   (TTFT and TPOT) under different concurrency levels. Find the saturation point.
+   (TTFT: time to first token, and TPOT: time per output token after that)
+   under different concurrency levels. Find the saturation point.
    Understand what saturates first.
 
 2. Implement a KV cache from scratch for a small transformer. Measure the speedup
    vs recomputing keys and values every step. Verify that outputs are identical.
 
 3. Quantize a model to INT8 using bitsandbytes and to 4-bit using GPTQ. Run the
-   same benchmark (e.g. MMLU subset) on all three (FP16, INT8, GPTQ-4bit).
-   Measure quality vs memory vs throughput tradeoffs.
+   same benchmark (e.g. a subset of MMLU, a standard multiple-choice knowledge
+   benchmark) on all three (FP16, INT8, GPTQ-4bit). Measure quality vs memory
+   vs throughput tradeoffs.
 
 4. Implement speculative decoding for a small model pair. Measure acceptance
    rate and actual throughput speedup. Understand why the speedup is less than
@@ -550,8 +595,10 @@ in S3/GCS/Azure, version them with DVC, commit the `.dvc` pointer files to git.
 Every model can be traced back to the exact dataset and code that produced it.
 
 **Data pipeline design**: the pipeline from raw data to training-ready shards
-must be deterministic and idempotent. Given the same raw data and the same
-pipeline code, you must get the same output shards. Use checksums to verify.
+must be deterministic and idempotent (running it twice on the same input
+produces the same output, with no side effects from the repeat run). Given the
+same raw data and the same pipeline code, you must get the same output shards.
+Use checksums to verify.
 
 **The data quality problem**: garbage in, garbage out, always. Build validation
 checks at every stage of your pipeline. Check for: duplicates, malformed examples,
@@ -625,11 +672,14 @@ What you need beyond Phase 2:
   than raw CUDA. The standard for writing custom attention variants, activation
   functions, and fused operations. Read the Triton paper. Implement Flash
   Attention in Triton.
-- [CUTLASS](https://github.com/NVIDIA/cutlass): NVIDIA's template library for building high-performance GEMM kernels.
-  Required if you want to push the hardware to its limits.
-- Profiling at the hardware level: Nsight Compute, roofline analysis, memory
-  traffic analysis. You need to know exactly why your kernel is not hitting
-  the hardware ceiling.
+- [CUTLASS](https://github.com/NVIDIA/cutlass): NVIDIA's template library for building high-performance GEMM
+  (General Matrix Multiply, the core compute primitive nearly everything in ML
+  reduces to) kernels. Required if you want to push the hardware to its limits.
+- Profiling at the hardware level: Nsight Compute, roofline analysis (plotting
+  a kernel's achieved performance against the hardware's compute and memory
+  bandwidth ceilings to see which one it is actually hitting), memory traffic
+  analysis. You need to know exactly why your kernel is not hitting the
+  hardware ceiling.
 
 The target: write a kernel that achieves >70% of theoretical peak FLOPS or
 bandwidth utilization. If you cannot get there, understand why.
@@ -659,8 +709,9 @@ What you need beyond Phase 3:
   training. You need hot-standby nodes, fast checkpoint restore, and the ability
   to detect and exclude bad GPUs without stopping the run.
 - Gradient compression: when communication is the bottleneck, reduce what you
-  send. Gradient quantization, top-K sparsification. Understand the convergence
-  implications.
+  send. Gradient quantization, top-K sparsification (only sending the K
+  largest-magnitude gradient values and dropping the rest). Understand the
+  convergence implications.
 
 ---
 
