@@ -14,6 +14,28 @@ non-deterministic and your correctness criteria are probabilistic.
 The bar is high and it is not going down. This roadmap tells you exactly what
 to build, in what order, and what it proves when you can do it.
 
+Part of the [Awesome ML Systems Engineering](README.md) list -- once you know
+which phase you are in, the README has the deeper reading for that specific
+topic.
+
+## Contents
+
+- [The Brutal Truth First](#the-brutal-truth-first)
+- [What the Role Actually Is](#what-the-role-actually-is)
+- [Phase 0: Prerequisites (Non-Negotiable)](#phase-0-prerequisites-non-negotiable)
+- [Phase 1: ML Fundamentals](#phase-1-ml-fundamentals-2-3-months)
+- [Phase 2: The GPU Programming Model](#phase-2-the-gpu-programming-model-2-3-months)
+- [Phase 3: Distributed Training](#phase-3-distributed-training-2-3-months)
+- [Phase 4: Inference Systems](#phase-4-inference-systems-2-3-months)
+- [Phase 5: ML Platform and Operations](#phase-5-ml-platform-and-operations-2-months)
+- [Phase 6: Specialization](#phase-6-specialization-3-6-months)
+- [The Skills That Are Not Technical](#the-skills-that-are-not-technical)
+- [What to Build (The Portfolio)](#what-to-build-the-portfolio)
+- [Timeline](#timeline)
+- [The Benchmark for Knowing Enough](#the-benchmark-for-knowing-enough)
+- [What This Is Not](#what-this-is-not)
+- [The Resources That Are Not Optional](#the-resources-that-are-not-optional)
+
 ---
 
 ## The Brutal Truth First
@@ -106,8 +128,8 @@ file descriptors, process scheduling. ML data pipelines break in ways that are
 impossible to debug without this.
 
 Resources that are not optional:
-- *Computer Systems: A Programmer's Perspective* (Bryant & O'Hallaron) -- read it cover to cover
-- *Operating Systems: Three Easy Pieces* -- free online, do the exercises
+- [Computer Systems: A Programmer's Perspective](https://csapp.cs.cmu.edu) (Bryant & O'Hallaron) -- read it cover to cover
+- [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/~remzi/OSTEP/) -- free online, do the exercises
 - *Computer Networking: A Top-Down Approach* (Kurose & Ross) -- first 4 chapters minimum
 
 ### Mathematics
@@ -215,7 +237,7 @@ catastrophically slow on GPU.
 ```
 Registers:     per-thread, ~255 per thread, fastest
 Shared memory: per-block, ~48-100KB, fast, explicitly managed
-L2 cache:      chip-wide, ~40MB on H100
+L2 cache:      chip-wide, ~50MB on H100 (40MB on A100)
 HBM:           off-chip DRAM, 80GB on H100, ~3.3 TB/s bandwidth
 ```
 
@@ -236,13 +258,13 @@ compute units.
 
 ### What to study
 
-Read the CUDA Programming Guide. Not skim. Read it. Chapters 1-6 minimum.
+Read the [CUDA Programming Guide](https://docs.nvidia.com/cuda/cuda-c-programming-guide/). Not skim. Read it. Chapters 1-6 minimum.
 Every concept in it will matter when you debug a slow kernel.
 
 *Programming Massively Parallel Processors* (Kirk & Hwu): the textbook. Work
 through the exercises.
 
-Lec 1-10 of Stanford CS149 (Parallel Computing): the clearest explanation of
+Lec 1-10 of [Stanford CS149](https://gfxcourses.stanford.edu/cs149/fall23) (Parallel Computing): the clearest explanation of
 the GPU programming model in existence. Free on YouTube.
 
 ### The projects that prove you did this phase
@@ -318,7 +340,7 @@ Column-parallel:  A1 = A[:, :d_ff/N],  A2 = A[:, d_ff/N:]
 
 Row-parallel:     A1 = A[:d_model/N, :],  A2 = A[d_model/N:, :]
                   X1 = X[:, :d_model/N],  X2 = X[:, d_model/N:]
-                  Y = reduce_scatter(X1@A1 + X2@A2)
+                  Y = all_reduce(X1@A1 + X2@A2)
 ```
 
 Each forward and backward pass requires an all-reduce across the tensor parallel
@@ -355,13 +377,13 @@ training on GPU clusters.
 
 ### Communication libraries
 
-**NCCL** (NVIDIA Collective Communications Library): the low-level communication
+**[NCCL](https://developer.nvidia.com/nccl)** (NVIDIA Collective Communications Library): the low-level communication
 library underlying PyTorch DDP, FSDP, and most distributed training. Know its
 primitives (all-reduce, all-gather, reduce-scatter, broadcast, barrier). Know
 that NCCL uses ring algorithms over NVLink (intra-node) and InfiniBand/RDMA
 (inter-node).
 
-**Gloo**: CPU fallback for NCCL. Slower. Used for CPU-based collectives.
+**[Gloo](https://github.com/facebookincubator/gloo)**: CPU fallback for NCCL. Slower. Used for CPU-based collectives.
 
 **NCCL tuning**: `NCCL_ALGO` (ring vs tree), `NCCL_PROTO` (simple vs LL vs
 LL128), socket buffer sizes. Getting these wrong can halve your training
@@ -406,15 +428,16 @@ for every attention head. Memory requirement:
 
 ```
 per token, per layer: 2 * n_kv_heads * head_dim * bytes_per_element
+
 for a 7B model with 32 layers, 8 KV heads, head_dim=128, BF16:
-  = 2 * 8 * 128 * 2 = 4096 bytes = 4KB per token per layer... wait
-  = 2 * 32 * 8 * 128 * 2 = 131,072 bytes = 128KB per token total
+  per layer: 2 * 8 * 128 * 2 = 4096 bytes = 4KB per token
+  all layers: 4096 * 32 = 131,072 bytes = 128KB per token, total
 ```
 
 For 2048-token sequences with a batch of 32: 8GB just for KV cache. This is why
 GQA (fewer KV heads) is standard -- it reduces KV cache proportionally.
 
-**PagedAttention** (vLLM): analogous to virtual memory. The KV cache is divided
+**[PagedAttention](https://arxiv.org/pdf/2309.06180)** ([vLLM](https://github.com/vllm-project/vllm)): analogous to virtual memory. The KV cache is divided
 into fixed-size blocks. Each sequence gets blocks allocated on demand. Blocks
 from different sequences can be non-contiguous in memory. This eliminates
 fragmentation and allows much higher batch sizes. The key insight is that
@@ -457,13 +480,13 @@ weights from BF16/FP32 to INT8 or INT4. No retraining. Some quality loss.
 
 **INT8 quantization**: weights stored as INT8, dequantized to FP16 for compute.
 Halves weight storage (and HBM reads), roughly equivalent throughput on hardware
-with INT8 matrix units. LLM.int8() (bitsandbytes) is the standard for single-GPU.
+with INT8 matrix units. LLM.int8() ([bitsandbytes](https://github.com/bitsandbytes-foundation/bitsandbytes)) is the standard for single-GPU.
 
-**GPTQ**: quantize weights to 4-bit using a second-order optimization method
+**[GPTQ](https://arxiv.org/abs/2210.17323)**: quantize weights to 4-bit using a second-order optimization method
 (approximate the Hessian, compensate for quantization error). Better quality
 than naive INT4 rounding. Standard for 4-bit weight-only quantization.
 
-**AWQ** (Activation-Aware Weight Quantization): quantizes weights by scaling
+**[AWQ](https://arxiv.org/abs/2306.00978)** (Activation-Aware Weight Quantization): quantizes weights by scaling
 channels based on activation magnitude. Outperforms GPTQ at low bit widths.
 The current state of the art for 4-bit.
 
@@ -508,7 +531,7 @@ dataset version, training metrics over time, evaluation metrics at the end.
 This is not optional. Without it, you cannot reproduce your best result, you
 cannot compare experiments, and you cannot debug regressions.
 
-Tools: Weights & Biases (standard), MLflow (self-hosted), Neptune, CometML.
+Tools: [Weights & Biases](https://wandb.ai) (standard), [MLflow](https://mlflow.org) (self-hosted), Neptune, CometML.
 Know how to log metrics, artifacts, and media. Know how to query runs
 programmatically to compare experiments.
 
@@ -522,7 +545,7 @@ Training data is not static. New data arrives. Data quality changes. A model
 trained on version 1.2 of the dataset must be distinguishable from one trained
 on version 1.3.
 
-**DVC** (Data Version Control): Git for datasets and models. Store large files
+**[DVC](https://dvc.org)** (Data Version Control): Git for datasets and models. Store large files
 in S3/GCS/Azure, version them with DVC, commit the `.dvc` pointer files to git.
 Every model can be traced back to the exact dataset and code that produced it.
 
@@ -583,7 +606,7 @@ What to monitor:
 Set up alerts for: error rate spikes, latency SLA breaches, significant data
 drift detected, model performance below threshold.
 
-Tools: Evidently AI, Arize, Fiddler, WhyLabs, or build your own on top of
+Tools: [Evidently AI](https://www.evidentlyai.com), [Arize](https://arize.com), [Fiddler](https://www.fiddler.ai), [WhyLabs](https://whylabs.ai), or build your own on top of
 Prometheus and Grafana.
 
 ---
@@ -598,11 +621,11 @@ This is the deepest technical path. You write CUDA/Triton kernels to make
 specific operations faster than the generic implementations.
 
 What you need beyond Phase 2:
-- Triton: Python-based kernel language that compiles to GPU. Faster to iterate
+- [Triton](https://triton-lang.org): Python-based kernel language that compiles to GPU. Faster to iterate
   than raw CUDA. The standard for writing custom attention variants, activation
   functions, and fused operations. Read the Triton paper. Implement Flash
   Attention in Triton.
-- CUTLASS: NVIDIA's template library for building high-performance GEMM kernels.
+- [CUTLASS](https://github.com/NVIDIA/cutlass): NVIDIA's template library for building high-performance GEMM kernels.
   Required if you want to push the hardware to its limits.
 - Profiling at the hardware level: Nsight Compute, roofline analysis, memory
   traffic analysis. You need to know exactly why your kernel is not hitting
@@ -617,9 +640,9 @@ Working on XLA, MLIR, TVM, or similar compiler stacks. You work on the layer
 between the user-facing framework (PyTorch, JAX) and the hardware kernels.
 
 What you need beyond Phase 2:
-- MLIR: the compiler infrastructure used by XLA, TVM, and most modern ML
+- [MLIR](https://mlir.llvm.org): the compiler infrastructure used by XLA, TVM, and most modern ML
   compilers. Understand dialects, transformations, and lowering passes.
-- XLA internals: how JAX's JIT works, what the HLO (High Level Optimizer)
+- [XLA](https://www.tensorflow.org/xla) internals: how JAX's JIT works, what the HLO (High Level Optimizer)
   IR looks like, how XLA fuses and tiles operations.
 - Polyhedral compilation: the mathematical framework for loop transformations.
   Required for understanding how compilers optimize affine loop nests.
@@ -661,14 +684,14 @@ is mandatory. The ability to read a paper, extract the core contribution, and
 identify what is and is not reproducible is a skill that takes years to build.
 
 Start with the papers that everyone references:
-- Attention Is All You Need (Vaswani et al., 2017)
-- BERT (Devlin et al., 2018)
-- GPT-2 (Radford et al., 2019)
-- Scaling Laws for Neural Language Models (Kaplan et al., 2020)
-- Training Compute-Optimal LLMs / Chinchilla (Hoffmann et al., 2022)
-- Flash Attention (Dao et al., 2022)
-- LLaMA (Touvron et al., 2023)
-- ZeRO (Rajbhandari et al., 2020)
+- [Attention Is All You Need](https://arxiv.org/abs/1706.03762) (Vaswani et al., 2017)
+- [BERT](https://arxiv.org/abs/1810.04805) (Devlin et al., 2018)
+- [GPT-2](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf) (Radford et al., 2019)
+- [Scaling Laws for Neural Language Models](https://arxiv.org/abs/2001.08361) (Kaplan et al., 2020)
+- [Training Compute-Optimal LLMs / Chinchilla](https://arxiv.org/abs/2203.15556) (Hoffmann et al., 2022)
+- [Flash Attention](https://arxiv.org/abs/2205.14135) (Dao et al., 2022)
+- [LLaMA](https://arxiv.org/abs/2302.13971) (Touvron et al., 2023)
+- [ZeRO](https://arxiv.org/abs/1910.02054) (Rajbhandari et al., 2020)
 
 Then read the papers in whatever specialization you choose. Read them with code
 open. If you cannot implement the core contribution in a weekend, you did not
@@ -809,33 +832,33 @@ These are the materials referenced throughout this roadmap that have no
 acceptable substitutes:
 
 **Books**
-- *Computer Systems: A Programmer's Perspective* (Bryant & O'Hallaron)
-- *Operating Systems: Three Easy Pieces* (Arpaci-Dusseau)
-- *Programming Massively Parallel Processors* (Kirk & Hwu)
-- *Designing Data-Intensive Applications* (Kleppmann)
-- *The Deep Learning Book* (Goodfellow, Bengio, Courville) -- chapters 6-9
+- [Computer Systems: A Programmer's Perspective](https://csapp.cs.cmu.edu) (Bryant & O'Hallaron)
+- [Operating Systems: Three Easy Pieces](https://pages.cs.wisc.edu/~remzi/OSTEP/) (Arpaci-Dusseau) -- free online
+- [Programming Massively Parallel Processors](https://www.elsevier.com/books/programming-massively-parallel-processors/kirk/978-0-323-91231-0) (Kirk & Hwu)
+- [Designing Data-Intensive Applications](https://dataintensive.net) (Kleppmann)
+- [The Deep Learning Book](https://www.deeplearningbook.org) (Goodfellow, Bengio, Courville) -- chapters 6-9, free online
 
 **Courses**
-- Stanford CS149: Parallel Computing (free, YouTube)
-- CMU 15-418: Parallel Computer Architecture (free, course website)
-- Stanford CS231n: CNNs for Visual Recognition (free, YouTube) -- for ML depth
-- Fast.ai Part 2: Deep Learning from the Foundations (free)
+- [Stanford CS149: Parallel Computing](https://gfxcourses.stanford.edu/cs149/fall23) (free, YouTube)
+- [CMU 15-418/618: Parallel Computer Architecture](https://www.cs.cmu.edu/~418/) (free, course website)
+- [Stanford CS231n: CNNs for Visual Recognition](http://cs231n.stanford.edu) (free, YouTube) -- for ML depth
+- [Fast.ai Part 2: Deep Learning from the Foundations](https://course.fast.ai/Lessons/part2.html) (free)
 
 **Papers (primary literature, not blog summaries)**
-- Flash Attention 1 and 2 (Dao et al.)
-- ZeRO (Rajbhandari et al.)
-- Chinchilla (Hoffmann et al.)
-- Megatron-LM (Shoeybi et al.)
-- vLLM / PagedAttention (Kwon et al.)
-- LLaMA 1/2/3 (Touvron et al.)
-- Triton (Tillet et al.)
+- [Flash Attention](https://arxiv.org/abs/2205.14135) and [Flash Attention 2](https://arxiv.org/abs/2307.08691) (Dao et al.)
+- [ZeRO](https://arxiv.org/abs/1910.02054) (Rajbhandari et al.)
+- [Chinchilla](https://arxiv.org/abs/2203.15556) (Hoffmann et al.)
+- [Megatron-LM](https://arxiv.org/abs/1909.08053) (Shoeybi et al.)
+- [vLLM / PagedAttention](https://arxiv.org/pdf/2309.06180) (Kwon et al.)
+- [LLaMA](https://arxiv.org/abs/2302.13971) (Touvron et al., see also the LLaMA 2 and 3 follow-ups)
+- [Triton](https://triton-lang.org) (Tillet et al.)
 
 **Code to read in full**
-- nanoGPT (Karpathy): 800 lines, every line matters
-- vLLM source: PagedAttention implementation
-- Flash Attention CUDA source: the tiling algorithm
-- PyTorch FSDP implementation
-- Megatron-LM: tensor and pipeline parallelism reference
+- [nanoGPT](https://github.com/karpathy/nanoGPT) (Karpathy): 800 lines, every line matters
+- [vLLM source](https://github.com/vllm-project/vllm): PagedAttention implementation
+- [Flash Attention CUDA source](https://github.com/Dao-AILab/flash-attention): the tiling algorithm
+- [PyTorch FSDP implementation](https://pytorch.org/docs/stable/fsdp.html)
+- [Megatron-LM](https://github.com/NVIDIA/Megatron-LM): tensor and pipeline parallelism reference
 
 ---
 
