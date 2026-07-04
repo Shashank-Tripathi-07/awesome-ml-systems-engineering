@@ -382,7 +382,7 @@ Go deep on **Hardware, Compilers & Kernels**: Kernel Programming, Neural Network
 ### LLM Observability and Tracing
 
 - [Langfuse](https://langfuse.com) ⭐ 🛠️ - Open-source LLM observability platform with full request tracing, evaluation, and prompt management via OpenTelemetry.
-- [Phoenix (Arize)](https://phoenix.arize.com) 🛠️ - Open-source ML observability tool for tracing LLM applications, evaluating outputs, and detecting drift in CV and tabular models.
+- [Phoenix (Arize)](https://docs.arize.com/phoenix) 🛠️ - Open-source ML observability tool for tracing LLM applications, evaluating outputs, and detecting drift in CV and tabular models.
 - [OpenLLMetry](https://www.traceloop.com) 🛠️ - Non-intrusive OpenTelemetry-based instrumentation for LLM applications. Supports OpenAI SDK, LangChain, and most major frameworks.
 - [LangSmith](https://smith.langchain.com) 🛠️ - LangChain's platform for tracing, evaluating, and deploying LLM applications with debugging tools for chain and agent runs.
 - [Helicone](https://www.helicone.ai) 🛠️ - LLM observability proxy for logging, caching, rate limiting, and optimizing LLM API calls across providers.
