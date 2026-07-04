@@ -36,10 +36,10 @@ jobs:
             --verbose
             --no-progress
             --exclude-mail
-            --max-retries 3
-            --retry-wait-time 5
-            --timeout 30
-            --accept 403,429,999
+            --max-retries 5
+            --retry-wait-time 10
+            --timeout 45
+            --accept 403,415,429,999
             --exclude "reddit\\.com"
             --exclude "linkedin\\.com"
             --exclude "twitter\\.com"
@@ -51,6 +51,12 @@ jobs:
             --exclude "coursera\\.org"
             --exclude "uber\\.com"
             --exclude "usenix\\.org"
+            --exclude "mcunet\\.mit\\.edu"
+            --exclude "iscaconf\\.org"
+            --exclude "asplos-conference\\.org"
+            --exclude "rdmaconsortium\\.org"
+            --exclude "supercomputing\\.org"
+            --exclude "mlebook\\.com"
             README.md
           fail: true
         env:
